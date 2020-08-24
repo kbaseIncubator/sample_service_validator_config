@@ -5,6 +5,8 @@ validators:
       display_name: Age (max)
       mappings:
         SESAR: Age (max)
+      uploader_mappings:
+        units: age_unit
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -22,6 +24,8 @@ validators:
       display_name: Age (min)
       mappings:
         SESAR: Age (min)
+      uploader_mappings:
+        units: age_unit
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -186,6 +190,8 @@ validators:
       display_name: Collection date
       mappings:
         SESAR: Collection date
+      uploader_mappings:
+        units: collection_date_precision
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
@@ -193,7 +199,9 @@ validators:
     key_metadata:
       display_name: Collection date (end)
       mappings:
-        SESAR: Collection date (end)
+        SESAR: Collection date (end)\
+      uploader_mappings:
+        units: collection_date_precision
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
@@ -298,6 +306,7 @@ validators:
       display_name: Country
       mappings:
         ENIGMA: Country
+        SESAR: Country
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
@@ -365,6 +374,8 @@ validators:
       display_name: Depth in Core (max)
       mappings:
         SESAR: Depth in Core (max)
+      uploader_mappings:
+        units: depth_scale
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -382,6 +393,8 @@ validators:
       display_name: Depth in Core (min)
       mappings:
         SESAR: Depth in Core (min)
+      uploader_mappings:
+        units: depth_scale
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -406,6 +419,7 @@ validators:
       display_name: Description
       mappings:
         ENIGMA: Description
+        SESAR: Description
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
@@ -530,6 +544,8 @@ validators:
       display_name: Elevation end
       mappings:
         SESAR: Elevation end
+      uploader_mappings:
+        units: elevation_unit
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -547,6 +563,8 @@ validators:
       display_name: Elevation start
       mappings:
         SESAR: Elevation start
+      uploader_mappings:
+        units: elevation_unit
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -652,6 +670,8 @@ validators:
       display_name: Geological Age
       mappings:
         SESAR: Geological Age
+      uploader_mappings:
+        units: geological_unit
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -692,8 +712,8 @@ validators:
       description: Unique identifier for the Sample
       display_name: Id
       mappings:
-        SESAR: Id
-        ENIGMA: Id
+        SESAR: IGSN
+        ENIGMA: SampleID
     validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
@@ -722,6 +742,8 @@ validators:
       mappings:
         SESAR: Latitude
         ENIGMA: Latitude
+      uploader_mappings:
+        units: str:degrees
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -790,6 +812,8 @@ validators:
       mappings:
         SESAR: Longitude
         ENIGMA: Longitude
+      uploader_mappings:
+        units: str:degrees
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -920,10 +944,10 @@ validators:
   name:
     key_metadata:
       description: name validator
-      display_name: Name
+      display_name: Sample Name
       mappings:
-        SESAR: Name
-        ENIGMA: Name
+        SESAR: Sample Name
+        ENIGMA: Sample Name
     validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
@@ -1209,9 +1233,10 @@ validators:
   parent_id:
     key_metadata:
       description: id field of parent
-      display_name: Parent_id
+      display_name: Parent ID
       mappings:
-        SESAR: Parent_id
+        SESAR: Parent IGSN
+        ENIGMA: Well Name
     validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
@@ -1485,6 +1510,8 @@ validators:
       mappings:
         SESAR: Size
         ENIGMA: Size
+      uploader_mappings:
+        units: size_unit
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
