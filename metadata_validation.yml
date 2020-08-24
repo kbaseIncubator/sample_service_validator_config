@@ -1,7 +1,7 @@
 validators:
   age_max:
     key_metadata:
-      description: maximum age in years
+      description: Maximum age in years
       display_name: Age (max)
       mappings:
         SESAR: Age (max)
@@ -1832,3 +1832,44 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
+
+  "gold:habitat":
+    key_metadata:
+      description:
+      display_name: Habitat
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "nmdc:community":
+    key_metadata:
+      description:
+      display_name: Community
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "ncbi:taxonomy_name":
+    key_metadata:
+      description:
+      display_name: NCBI taxonomy name
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "gold:ecosystem_subtype":
+    key_metadata:
+      description:
+      display_name: Ecosystem Subtype
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "gold:ecosystem_type":
+    key_metadata:
+      description:
+      display_name: Ecosystem Type
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
