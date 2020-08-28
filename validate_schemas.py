@@ -14,6 +14,10 @@ _META_VAL_JSONSCHEMA = {
                         'type': 'object',
                         'additionalProperties': {
                             'type': ['number', 'boolean', 'string', 'null']
+                        },
+                        'properties': {
+                            'mappings': {'type': 'object'},
+                            'uploader_mappings': {'type': 'object'}
                         }
                     },
                     'validators': {
