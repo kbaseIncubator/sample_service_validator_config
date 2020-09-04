@@ -3,6 +3,7 @@ validators:
     key_metadata:
       description: Maximum age in years
       display_name: Age (max)
+    static_mappings:
       SESAR: Age (max)
       units: age_unit
     validators:
@@ -21,6 +22,7 @@ validators:
     key_metadata:
       description: minimum age in years
       display_name: Age (min)
+    static_mappings:
       SESAR: Age (min)
       units: age_unit
     validators:
@@ -39,6 +41,7 @@ validators:
     key_metadata:
       description: units in cells per gram
       display_name: AODC
+    static_mappings:
       ENIGMA: AODC
     validators:
     - callable_builder: number
@@ -55,6 +58,8 @@ validators:
   aquifer:
     key_metadata:
       display_name: Aquifer
+
+    static_mappings:
       ENIGMA: Aquifer
     validators:
     - callable_builder: noop
@@ -63,6 +68,7 @@ validators:
   area_name:
     key_metadata:
       display_name: Area Name
+    static_mappings:
       ENIGMA: Area Name
     validators:
     - callable_builder: noop
@@ -72,6 +78,7 @@ validators:
     key_metadata:
       description: units in ft above mean sea level (ft AMSL)
       display_name: Average Water Level
+    static_mappings:
       ENIGMA: Average Water Level
     validators:
     - callable_builder: number
@@ -88,6 +95,7 @@ validators:
     key_metadata:
       description: units in milligrams per gram
       display_name: Biomass Carbon
+    static_mappings:
       ENIGMA: Biomass Carbon
     validators:
     - callable_builder: number
@@ -104,6 +112,7 @@ validators:
   biome:
     key_metadata:
       display_name: Biome
+    static_mappings:
       ENIGMA: Biome
     validators:
     - callable_builder: noop
@@ -113,6 +122,7 @@ validators:
     key_metadata:
       description: units in cells per gram
       display_name: BONCAT Activity
+    static_mappings:
       ENIGMA: BONCAT Activity
     validators:
     - callable_builder: number
@@ -130,6 +140,7 @@ validators:
     key_metadata:
       description: boring depth in ft below groud surface (ft BGS)
       display_name: Boring depth
+    static_mappings:
       ENIGMA: Boring depth
     validators:
     - callable_builder: number
@@ -146,6 +157,7 @@ validators:
     key_metadata:
       description: boring diameter in inches
       display_name: Boring Diameter
+    static_mappings:
       ENIGMA: Boring Diameter
     validators:
     - callable_builder: number
@@ -162,6 +174,7 @@ validators:
   boring_refusal:
     key_metadata:
       display_name: Boring Refusal
+    static_mappings:
       ENIGMA: Boring Refusal
     validators:
     - callable_builder: noop
@@ -170,6 +183,7 @@ validators:
   city_township:
     key_metadata:
       display_name: City/Township
+    static_mappings:
       SESAR: City/Township
     validators:
     - callable_builder: noop
@@ -178,6 +192,7 @@ validators:
   classification:
     key_metadata:
       display_name: Classification
+    static_mappings:
       SESAR: Classification
     validators:
     - callable_builder: noop
@@ -186,6 +201,7 @@ validators:
   collection_date:
     key_metadata:
       display_name: Collection date
+    static_mappings:
       SESAR: Collection date
       units: collection_date_precision
     validators:
@@ -195,6 +211,7 @@ validators:
   collection_date_end:
     key_metadata:
       display_name: Collection date (end)
+    static_mappings:
       SESAR: Collection date (end)\
       units: collection_date_precision
     validators:
@@ -204,6 +221,7 @@ validators:
   collection_date_precision:
     key_metadata:
       display_name: Collection date precision
+    static_mappings:
       SESAR: Collection date precision
     validators:
     - callable_builder: noop
@@ -212,6 +230,7 @@ validators:
   collection_method:
     key_metadata:
       display_name: Collection method
+    static_mappings:
       SESAR: Collection method
     validators:
     - callable_builder: noop
@@ -220,6 +239,7 @@ validators:
   collection_method_description:
     key_metadata:
       display_name: Collection method description
+    static_mappings:
       SESAR: Collection method description
     validators:
     - callable_builder: noop
@@ -228,6 +248,7 @@ validators:
   collection_time:
     key_metadata:
       display_name: Collection time
+    static_mappings:
       ENIGMA: Collection time
     validators:
     - callable_builder: noop
@@ -236,6 +257,7 @@ validators:
   collection_time_end:
     key_metadata:
       display_name: Collection time (end)
+    static_mappings:
       ENIGMA: Collection time (end)
     validators:
     - callable_builder: noop
@@ -244,6 +266,7 @@ validators:
   collector_chief_scientist:
     key_metadata:
       display_name: Collector/Chief Scientist name
+    static_mappings:
       SESAR: Collector/Chief Scientist name
     validators:
     - callable_builder: noop
@@ -252,6 +275,7 @@ validators:
   collector_chief_scientist_address:
     key_metadata:
       display_name: Collector/Chief Scientist address
+    static_mappings:
       SESAR: Collector/Chief Scientist address
     validators:
     - callable_builder: noop
@@ -260,6 +284,7 @@ validators:
   condition:
     key_metadata:
       display_name: Condition
+    static_mappings:
       ENIGMA: Condition
     validators:
     - callable_builder: noop
@@ -269,6 +294,7 @@ validators:
     key_metadata:
       description: conductivity in millisiemens per centimeter
       display_name: Conductivity
+    static_mappings:
       ENIGMA: Conductivity
     validators:
     - callable_builder: number
@@ -284,6 +310,7 @@ validators:
   continent:
     key_metadata:
       display_name: Continent
+    static_mappings:
       ENIGMA: Continent
     validators:
     - callable_builder: noop
@@ -292,6 +319,7 @@ validators:
   coordinate_precision?:
     key_metadata:
       display_name: Coordinate Precision
+    static_mappings:
       SESAR: Coordinate Precision
     validators:
     - callable_builder: noop
@@ -300,7 +328,9 @@ validators:
   country:
     key_metadata:
       display_name: Country
+    static_mappings:
       ENIGMA: Country
+    static_mappings:
       SESAR: Country
     validators:
     - callable_builder: noop
@@ -309,6 +339,7 @@ validators:
   county:
     key_metadata:
       display_name: County
+    static_mappings:
       SESAR: County
     validators:
     - callable_builder: noop
@@ -317,6 +348,7 @@ validators:
   current_archive:
     key_metadata:
       display_name: Current archive
+    static_mappings:
       SESAR: Current archive
     validators:
     - callable_builder: noop
@@ -325,6 +357,7 @@ validators:
   current_archive_contact:
     key_metadata:
       display_name: Current archive contact name
+    static_mappings:
       SESAR: Current archive contact name
     validators:
     - callable_builder: noop
@@ -334,6 +367,7 @@ validators:
     key_metadata:
       description: DAPI cell count in cells per gram
       display_name: DAPI Cell Count
+    static_mappings:
       ENIGMA: DAPI Cell Count
     validators:
     - callable_builder: noop
@@ -342,6 +376,7 @@ validators:
   date:
     key_metadata:
       display_name: Date
+    static_mappings:
       ENIGMA: Date
     validators:
     - callable_builder: noop
@@ -351,6 +386,7 @@ validators:
     key_metadata:
       description: depth in centimeters below ground surface (cm BGS)
       display_name: Depth
+    static_mappings:
       SESAR: Depth
       ENIGMA: Depth
     validators:
@@ -368,6 +404,7 @@ validators:
     key_metadata:
       description: maximum depth in core in meters
       display_name: Depth in Core (max)
+    static_mappings:
       SESAR: Depth in Core (max)
       units: depth_scale
     validators:
@@ -386,6 +423,7 @@ validators:
     key_metadata:
       description: minimum depth in core in meters
       display_name: Depth in Core (min)
+    static_mappings:
       SESAR: Depth in Core (min)
       units: depth_scale
     validators:
@@ -403,6 +441,7 @@ validators:
   depth_scale:
     key_metadata:
       display_name: Depth scale
+    static_mappings:
       SESAR: Depth scale
     validators:
     - callable_builder: noop
@@ -411,6 +450,7 @@ validators:
   description:
     key_metadata:
       display_name: Description
+    static_mappings:
       ENIGMA: Description
       SESAR: Description
     validators:
@@ -421,6 +461,7 @@ validators:
     key_metadata:
       description: units in nanograms
       display_name: DNA Picogreen Total
+    static_mappings:
       ENIGMA: DNA Picogreen Total
     validators:
     - callable_builder: number
@@ -437,6 +478,7 @@ validators:
     key_metadata:
       description: drive casing end depth in ft below ground surface (ft BGS)
       display_name: Drive Casing End Depth
+    static_mappings:
       ENIGMA: Drive Casing End Depth
     validators:
     - callable_builder: number
@@ -453,6 +495,7 @@ validators:
     key_metadata:
       description: drive casing inner diameter in inches
       display_name: Drive Casing ID
+    static_mappings:
       ENIGMA: Drive Casing ID
     validators:
     - callable_builder: number
@@ -470,6 +513,7 @@ validators:
     key_metadata:
       description: drive casing outer diameter in inches
       display_name: Drive Casing OD
+    static_mappings:
       ENIGMA: Drive Casing OD
     validators:
     - callable_builder: number
@@ -487,6 +531,7 @@ validators:
     key_metadata:
       description: units in ft below ground surface (ft BGS)
       display_name: Drive Casing Start Depth
+    static_mappings:
       ENIGMA: Drive Casing Start Depth
     validators:
     - callable_builder: number
@@ -502,6 +547,7 @@ validators:
   drive_casing_type:
     key_metadata:
       display_name: Drive Casing Type
+    static_mappings:
       ENIGMA: Drive Casing Type
     validators:
     - callable_builder: noop
@@ -511,6 +557,7 @@ validators:
     key_metadata:
       description: Easting in meters
       display_name: Easting
+    static_mappings:
       SESAR: Easting
     validators:
     - callable_builder: number
@@ -526,6 +573,7 @@ validators:
   elevation:
     key_metadata:
       display_name: Elevation
+    static_mappings:
       ENIGMA: Elevation
       SESAR: Elevation
     validators:
@@ -536,6 +584,7 @@ validators:
     key_metadata:
       description: Elevation end in meters
       display_name: Elevation end
+    static_mappings:
       SESAR: Elevation end
       units: elevation_unit
     validators:
@@ -554,6 +603,7 @@ validators:
     key_metadata:
       description: Elevation start in meters
       display_name: Elevation start
+    static_mappings:
       SESAR: Elevation start
       units: elevation_unit
     validators:
@@ -571,6 +621,7 @@ validators:
   env_package:
     key_metadata:
       display_name: Env_package
+    static_mappings:
       ENIGMA: Env_package
     validators:
     - callable_builder: noop
@@ -579,6 +630,7 @@ validators:
   environmental_package:
     key_metadata:
       display_name: Environmental Package
+    static_mappings:
       ENIGMA: Environmental Package
     validators:
     - callable_builder: noop
@@ -587,6 +639,7 @@ validators:
   experiment_name:
     key_metadata:
       display_name: Experiment Name
+    static_mappings:
       ENIGMA: Experiment Name
     validators:
     - callable_builder: noop
@@ -595,6 +648,7 @@ validators:
   feature:
     key_metadata:
       display_name: Feature
+    static_mappings:
       ENIGMA: Feature
     validators:
     - callable_builder: noop
@@ -603,6 +657,7 @@ validators:
   field_name_informal_classification:
     key_metadata:
       display_name: Field name (informal classification)
+    static_mappings:
       SESAR: Field name (informal classification)
     validators:
     - callable_builder: noop
@@ -611,6 +666,7 @@ validators:
   field_program_cruise:
     key_metadata:
       display_name: Field program/cruise
+    static_mappings:
       SESAR: Field program/cruise
     validators:
     - callable_builder: noop
@@ -620,6 +676,7 @@ validators:
     key_metadata:
       description: Filter pore size in microns
       display_name: Filter
+    static_mappings:
       ENIGMA: Filter
     validators:
     - callable_builder: number
@@ -635,6 +692,7 @@ validators:
   fraction:
     key_metadata:
       display_name: Fraction
+    static_mappings:
       ENIGMA: Fraction
     validators:
     - callable_builder: noop
@@ -643,6 +701,7 @@ validators:
   fractures_cavities_waterbreaks:
     key_metadata:
       display_name: Fractures/Cavities/WaterBreaks
+    static_mappings:
       ENIGMA: Fractures/Cavities/WaterBreaks
     validators:
     - callable_builder: noop
@@ -651,6 +710,7 @@ validators:
   functional_area:
     key_metadata:
       display_name: Functional Area
+    static_mappings:
       ENIGMA: Functional Area
     validators:
     - callable_builder: noop
@@ -660,6 +720,7 @@ validators:
     key_metadata:
       description: Geological Age in years * 1000000
       display_name: Geological Age
+    static_mappings:
       SESAR: Geological Age
       units: geological_unit
     validators:
@@ -677,6 +738,7 @@ validators:
   geological_zone:
     key_metadata:
       display_name: Geological Zone
+    static_mappings:
       ENIGMA: Geological Zone
     validators:
     - callable_builder: noop
@@ -686,6 +748,7 @@ validators:
     key_metadata:
       description: ground elevation in ft above mean sea level (ft AMSL)
       display_name: Ground Elevation
+    static_mappings:
       ENIGMA: Ground Elevation
     validators:
     - callable_builder: number
@@ -702,7 +765,9 @@ validators:
     key_metadata:
       description: Unique identifier for the Sample
       display_name: Id
+    static_mappings:
       SESAR: IGSN
+    static_mappings:
       ENIGMA: SampleID
     validators:
     - callable_builder: string
@@ -713,6 +778,7 @@ validators:
   igsn:
     key_metadata:
       display_name: IGSN
+    static_mappings:
       SESAR: IGSN
     validators:
     - callable_builder: noop
@@ -721,6 +787,7 @@ validators:
   installation_method:
     key_metadata:
       display_name: Installation Method
+    static_mappings:
       SESAR: Installation Method
     validators:
     - callable_builder: noop
@@ -730,6 +797,7 @@ validators:
     key_metadata:
       description: Latitude in degrees
       display_name: Latitude
+    static_mappings:
       SESAR: Latitude
       ENIGMA: Latitude
       units: str:degrees
@@ -749,6 +817,7 @@ validators:
   launch_id:
     key_metadata:
       display_name: Launch ID
+    static_mappings:
       ENIGMA: Launch ID
     validators:
     - callable_builder: noop
@@ -757,6 +826,7 @@ validators:
   launch_platform_name:
     key_metadata:
       display_name: Launch platform name
+    static_mappings:
       ENIGMA: Launch platform name
     validators:
     - callable_builder: noop
@@ -766,6 +836,7 @@ validators:
     key_metadata:
       description: units in ngC/day cell
       display_name: Leucine Activity (ngC/day cell)
+    static_mappings:
       ENIGMA: Leucine Activity (ngC/day cell)
     validators:
     - callable_builder: noop
@@ -774,6 +845,7 @@ validators:
   locality:
     key_metadata:
       display_name: Locality
+    static_mappings:
       ENIGMA: Locality
     validators:
     - callable_builder: noop
@@ -782,6 +854,7 @@ validators:
   locality_description:
     key_metadata:
       display_name: Locality description
+    static_mappings:
       SESAR: Locality description
     validators:
     - callable_builder: noop
@@ -790,6 +863,7 @@ validators:
   location_description:
     key_metadata:
       display_name: Location description
+    static_mappings:
       SESAR: Location description
     validators:
     - callable_builder: noop
@@ -799,6 +873,7 @@ validators:
     key_metadata:
       description: Longitude in degrees
       display_name: Longitude
+    static_mappings:
       SESAR: Longitude
       ENIGMA: Longitude
       units: str:degrees
@@ -819,6 +894,7 @@ validators:
     key_metadata:
       description: Lower seal end depth in ft below ground surface (ft BGS)
       display_name: Lower Seal End Depth
+    static_mappings:
       ENIGMA: Lower Seal End Depth
     validators:
     - callable_builder: number
@@ -835,6 +911,7 @@ validators:
     key_metadata:
       description: Lower seal start depth in ft below ground surface (ft BGS)
       display_name: Lower Seal Start Depth
+    static_mappings:
       ENIGMA: Lower Seal Start Depth
     validators:
     - callable_builder: number
@@ -850,6 +927,7 @@ validators:
   lower_seal_type:
     key_metadata:
       display_name: Lower Seal Type
+    static_mappings:
       ENIGMA: Lower Seal Type
     validators:
     - callable_builder: noop
@@ -858,6 +936,7 @@ validators:
   material:
     key_metadata:
       display_name: Material
+    static_mappings:
       SESAR: Material
       ENIGMA: Material
     validators:
@@ -867,6 +946,7 @@ validators:
   maturation_time:
     key_metadata:
       display_name: Maturation Time
+    static_mappings:
       ENIGMA: Maturation Time
     validators:
     - callable_builder: noop
@@ -876,6 +956,7 @@ validators:
     key_metadata:
       description: Maximum water level in ft above mean sea level (ft AMSL)
       display_name: Max Water Level
+    static_mappings:
       ENIGMA: Max Water Level
     validators:
     - callable_builder: number
@@ -891,6 +972,7 @@ validators:
   method:
     key_metadata:
       display_name: Method
+    static_mappings:
       ENIGMA: Method
     validators:
     - callable_builder: noop
@@ -900,6 +982,7 @@ validators:
     key_metadata:
       description: Minimum water level in ft above mean sea level (ft AMSL)
       display_name: Min Water Level
+    static_mappings:
       ENIGMA: Min Water Level
     validators:
     - callable_builder: number
@@ -916,6 +999,7 @@ validators:
     key_metadata:
       description: percent moisture
       display_name: Moisture
+    static_mappings:
       ENIGMA: Moisture
     validators:
     - callable_builder: number
@@ -934,6 +1018,7 @@ validators:
     key_metadata:
       description: name validator
       display_name: Sample Name
+    static_mappings:
       SESAR: Sample Name
       ENIGMA: Sample Name
     validators:
@@ -945,6 +1030,7 @@ validators:
   name_of_physiographic_feature:
     key_metadata:
       display_name: Name of physiographic feature
+    static_mappings:
       SESAR: Name of physiographic feature
     validators:
     - callable_builder: noop
@@ -953,6 +1039,7 @@ validators:
   navigation_type:
     key_metadata:
       display_name: Navigation type
+    static_mappings:
       SESAR: Navigation type
     validators:
     - callable_builder: noop
@@ -962,6 +1049,7 @@ validators:
     key_metadata:
       description: Northing in meters
       display_name: Northing
+    static_mappings:
       SESAR: Northing
     validators:
     - callable_builder: number
@@ -977,6 +1065,7 @@ validators:
   open:
     key_metadata:
       display_name: Open
+    static_mappings:
       ENIGMA: Open
     validators:
     - callable_builder: noop
@@ -986,6 +1075,7 @@ validators:
     key_metadata:
       description: Open casing depth in ft below ground surface (ft BGS)
       display_name: Open Casing Depth
+    static_mappings:
       ENIGMA: Open Casing Depth
     validators:
     - callable_builder: number
@@ -1002,6 +1092,7 @@ validators:
     key_metadata:
       description: open casing inner diameter in inches (in)
       display_name: Open Casing ID
+    static_mappings:
       ENIGMA: Open Casing ID
     validators:
     - callable_builder: number
@@ -1019,6 +1110,7 @@ validators:
     key_metadata:
       description: open casing outer diameter in inches (in)
       display_name: Open Casing OD
+    static_mappings:
       ENIGMA: Open Casing OD
     validators:
     - callable_builder: number
@@ -1035,6 +1127,7 @@ validators:
   open_casing_type:
     key_metadata:
       display_name: Open Casing Type
+    static_mappings:
       ENIGMA: Open Casing Type
     validators:
     - callable_builder: noop
@@ -1044,6 +1137,7 @@ validators:
     key_metadata:
       description: Open hole depth in ft below ground surface (ft BGS)
       display_name: Open Hole Depth
+    static_mappings:
       ENIGMA: Open Hole Depth
     validators:
     - callable_builder: number
@@ -1060,6 +1154,7 @@ validators:
     key_metadata:
       description: Open hole diameter in inches
       display_name: Open Hole Diameter
+    static_mappings:
       ENIGMA: Open Hole Diameter
     validators:
     - callable_builder: number
@@ -1077,6 +1172,7 @@ validators:
     key_metadata:
       description: Open interval diameter in inches
       display_name: Open Interval Diameter
+    static_mappings:
       ENIGMA: Open Interval Diameter
     validators:
     - callable_builder: number
@@ -1094,6 +1190,7 @@ validators:
     key_metadata:
       description: Open interval end depth in ft below ground surface (ft BGS)
       display_name: Open Interval End Depth
+    static_mappings:
       ENIGMA: Open Interval End Depth
     validators:
     - callable_builder: number
@@ -1110,6 +1207,7 @@ validators:
     key_metadata:
       description: Open interval start depth in ft below ground surface (ft BGS)
       display_name: Open Interval Start Depth
+    static_mappings:
       ENIGMA: Open Interval Start Depth
     validators:
     - callable_builder: number
@@ -1126,6 +1224,7 @@ validators:
     key_metadata:
       description: Organic carbon in milligrams per gram dry weight
       display_name: Organic Carbon
+    static_mappings:
       ENIGMA: Organic Carbon
     validators:
     - callable_builder: number
@@ -1142,6 +1241,7 @@ validators:
   original_archive:
     key_metadata:
       display_name: Original archive
+    static_mappings:
       ENIGMA: Original archive
     validators:
     - callable_builder: noop
@@ -1150,6 +1250,7 @@ validators:
   original_archive_contact:
     key_metadata:
       display_name: Original archive contact
+    static_mappings:
       ENIGMA: Original archive contact
     validators:
     - callable_builder: noop
@@ -1158,6 +1259,7 @@ validators:
   origination_or_plug_abandon:
     key_metadata:
       display_name: Origination or Plug/Abandon
+    static_mappings:
       ENIGMA: Origination or Plug/Abandon
     validators:
     - callable_builder: noop
@@ -1166,6 +1268,7 @@ validators:
   other_name:
     key_metadata:
       display_name: Other Name
+    static_mappings:
       ENIGMA: Other Name
     validators:
     - callable_builder: noop
@@ -1174,6 +1277,7 @@ validators:
   other_names:
     key_metadata:
       display_name: Other name(s)
+    static_mappings:
       SESAR: Other name(s)
     validators:
     - callable_builder: noop
@@ -1183,6 +1287,7 @@ validators:
     key_metadata:
       description: Packind depth end in ft below ground surface (ft BGS)
       display_name: Packing Depth End
+    static_mappings:
       ENIGMA: Packing Depth End
     validators:
     - callable_builder: number
@@ -1199,6 +1304,7 @@ validators:
     key_metadata:
       description: Packind depth start in ft below ground surface (ft BGS)
       display_name: Packing Depth Start
+    static_mappings:
       ENIGMA: Packing Depth Start
     validators:
     - callable_builder: number
@@ -1214,6 +1320,7 @@ validators:
   packing_type:
     key_metadata:
       display_name: Packing Type
+    static_mappings:
       ENIGMA: Packing Type
     validators:
     - callable_builder: noop
@@ -1223,6 +1330,7 @@ validators:
     key_metadata:
       description: id field of parent
       display_name: Parent ID
+    static_mappings:
       SESAR: Parent IGSN
       ENIGMA: Well Name
     validators:
@@ -1235,6 +1343,7 @@ validators:
   parent_igsn:
     key_metadata:
       display_name: Parent IGSN
+    static_mappings:
       SESAR: Parent IGSN
     validators:
     - callable_builder: noop
@@ -1244,6 +1353,7 @@ validators:
     key_metadata:
       description: pH of sample
       display_name: pH
+    static_mappings:
       SESAR: pH
       ENIGMA: pH
     validators:
@@ -1262,6 +1372,7 @@ validators:
   platform_name:
     key_metadata:
       display_name: Platform name
+    static_mappings:
       ENIGMA: Platform name
     validators:
     - callable_builder: noop
@@ -1270,6 +1381,7 @@ validators:
   platform_type:
     key_metadata:
       display_name: Platform type
+    static_mappings:
       ENIGMA: Platform type
     validators:
     - callable_builder: noop
@@ -1279,6 +1391,7 @@ validators:
     key_metadata:
       description: Pore water extraction in microliters
       display_name: Pore Water Extraction
+    static_mappings:
       ENIGMA: Pore Water Extraction
     validators:
     - callable_builder: number
@@ -1294,6 +1407,7 @@ validators:
   primary_physiographic_feature:
     key_metadata:
       display_name: Primary physiographic feature
+    static_mappings:
       SESAR: Primary physiographic feature
     validators:
     - callable_builder: noop
@@ -1302,6 +1416,7 @@ validators:
   purpose:
     key_metadata:
       display_name: Purpose
+    static_mappings:
       SESAR: Purpose
     validators:
     - callable_builder: noop
@@ -1310,6 +1425,7 @@ validators:
   recovery_factor:
     key_metadata:
       display_name: Recovery Factor
+    static_mappings:
       ENIGMA: Recovery Factor
     validators:
     - callable_builder: noop
@@ -1318,6 +1434,7 @@ validators:
   redox_potential_?:
     key_metadata:
       display_name: Redox Potential
+    static_mappings:
       ENIGMA: Redox Potential
     validators:
     - callable_builder: noop
@@ -1326,6 +1443,7 @@ validators:
   region:
     key_metadata:
       display_name: Region
+    static_mappings:
       ENIGMA: Region
     validators:
     - callable_builder: noop
@@ -1334,6 +1452,7 @@ validators:
   related_identifiers:
     key_metadata:
       display_name: Related Identifiers
+    static_mappings:
       SESAR: Related Identifiers
     validators:
     - callable_builder: noop
@@ -1342,6 +1461,7 @@ validators:
   relation_type:
     key_metadata:
       display_name: Relation Type
+    static_mappings:
       SESAR: Relation Type
     validators:
     - callable_builder: noop
@@ -1350,6 +1470,7 @@ validators:
   release_date:
     key_metadata:
       display_name: Release date
+    static_mappings:
       SESAR: Release date
       ENIGMA: Release date
     validators:
@@ -1359,6 +1480,7 @@ validators:
   replicate:
     key_metadata:
       display_name: Replicate
+    static_mappings:
       ENIGMA: Replicate
     validators:
     - callable_builder: noop
@@ -1367,6 +1489,7 @@ validators:
   rock_formation:
     key_metadata:
       display_name: Rock Formation
+    static_mappings:
       ENIGMA: Rock Formation
     validators:
     - callable_builder: noop
@@ -1375,6 +1498,7 @@ validators:
   sample_description:
     key_metadata:
       display_name: Sample Description
+    static_mappings:
       SESAR: Sample Description
     validators:
     - callable_builder: noop
@@ -1383,6 +1507,7 @@ validators:
   sample_name:
     key_metadata:
       display_name: Sample Name
+    static_mappings:
       SESAR: Sample Name
     validators:
     - callable_builder: noop
@@ -1391,6 +1516,7 @@ validators:
   sampleid:
     key_metadata:
       display_name: SampleID
+    static_mappings:
       ENIGMA: SampleID
     validators:
     - callable_builder: noop
@@ -1400,6 +1526,7 @@ validators:
     key_metadata:
       description: Screen bottom elevation in ft above mean sea level (ft AMSL)
       display_name: Screen Bottom Elevation
+    static_mappings:
       ENIGMA: Screen Bottom Elevation
     validators:
     - callable_builder: number
@@ -1416,6 +1543,7 @@ validators:
     key_metadata:
       description: Screen end depth in ft below ground surface (ft BGS)
       display_name: Screen End Depth
+    static_mappings:
       ENIGMA: Screen End Depth
     validators:
     - callable_builder: number
@@ -1432,6 +1560,7 @@ validators:
     key_metadata:
       description: Screen start depth in ft below ground surface (ft BGS)
       display_name: Screen Start Depth
+    static_mappings:
       ENIGMA: Screen Start Depth
     validators:
     - callable_builder: number
@@ -1448,6 +1577,7 @@ validators:
     key_metadata:
       description: Screen top elevation in ft above mean sea level (ft AMSL)
       display_name: Screen Top Elevation
+    static_mappings:
       ENIGMA: Screen Top Elevation
     validators:
     - callable_builder: number
@@ -1463,6 +1593,7 @@ validators:
   screen_type:
     key_metadata:
       display_name: Screen Type
+    static_mappings:
       ENIGMA: Screen Type
     validators:
     - callable_builder: noop
@@ -1471,6 +1602,7 @@ validators:
   screened:
     key_metadata:
       display_name: Screened
+    static_mappings:
       ENIGMA: Screened
     validators:
     - callable_builder: noop
@@ -1480,6 +1612,7 @@ validators:
     key_metadata:
       description: Screened interval in ft
       display_name: Screened Interval
+    static_mappings:
       ENIGMA: Screened Interval
     validators:
     - callable_builder: number
@@ -1496,6 +1629,7 @@ validators:
     key_metadata:
       description: Size in meters cubed
       display_name: Size
+    static_mappings:
       SESAR: Size
       ENIGMA: Size
       units: size_unit
@@ -1514,6 +1648,7 @@ validators:
   state_province:
     key_metadata:
       display_name: State/Province
+    static_mappings:
       SESAR: State/Province
       ENIGMA: State/Province
     validators:
@@ -1523,6 +1658,7 @@ validators:
   sub-object_type:
     key_metadata:
       display_name: Sub-object type
+    static_mappings:
       SESAR: Sub-object type
     validators:
     - callable_builder: noop
@@ -1531,6 +1667,7 @@ validators:
   temperature:
     key_metadata:
       display_name: Temperature
+    static_mappings:
       SESAR: Temperature
       ENIGMA: Temperature
     validators:
@@ -1547,6 +1684,7 @@ validators:
   time:
     key_metadata:
       display_name: Time
+    static_mappings:
       ENIGMA: Time
     validators:
     - callable_builder: noop
@@ -1555,6 +1693,7 @@ validators:
   time_zone:
     key_metadata:
       display_name: Time Zone
+    static_mappings:
       ENIGMA: Time Zone
     validators:
     - callable_builder: noop
@@ -1563,6 +1702,7 @@ validators:
   timezone:
     key_metadata:
       display_name: Timezone
+    static_mappings:
       ENIGMA: Timezone
     validators:
     - callable_builder: noop
@@ -1572,6 +1712,7 @@ validators:
     key_metadata:
       description: Top of casing elevation in ft above mean sea level (ft AMSL)
       display_name: Top of Casing Elevation
+    static_mappings:
       ENIGMA: Top of Casing Elevation
     validators:
     - callable_builder: number
@@ -1588,6 +1729,7 @@ validators:
     key_metadata:
       description: Top of casing stickup in ft
       display_name: Top of Casing Stickup
+    static_mappings:
       ENIGMA: Top of Casing Stickup
     validators:
     - callable_builder: number
@@ -1604,6 +1746,7 @@ validators:
     key_metadata:
       description: Top of fresh bedrock in ft below ground surface (ft BGS)
       display_name: Top of Fresh Bedrock
+    static_mappings:
       ENIGMA: Top of Fresh Bedrock
     validators:
     - callable_builder: number
@@ -1620,6 +1763,7 @@ validators:
     key_metadata:
       description: Top of weathered bedrock in ft below ground surface (ft BGS)
       display_name: Top of Weathered Bedrock
+    static_mappings:
       ENIGMA: Top of Weathered Bedrock
     validators:
     - callable_builder: number
@@ -1636,6 +1780,7 @@ validators:
     key_metadata:
       description: Total carbon in milligrams per gram dry weight
       display_name: Total Carbon
+    static_mappings:
       ENIGMA: Total Carbon
     validators:
     - callable_builder: number
@@ -1653,6 +1798,7 @@ validators:
     key_metadata:
       description: Total nitrogen in milligrams per gram dry weight
       display_name: Total Nitrogen
+    static_mappings:
       ENIGMA: Total Nitrogen
     validators:
     - callable_builder: number
@@ -1669,6 +1815,7 @@ validators:
   treatment:
     key_metadata:
       display_name: Treatment
+    static_mappings:
       ENIGMA: Treatment
     validators:
     - callable_builder: noop
@@ -1677,6 +1824,7 @@ validators:
   type_of_well:
     key_metadata:
       display_name: Type of Well
+    static_mappings:
       ENIGMA: Type of Well
     validators:
     - callable_builder: noop
@@ -1686,6 +1834,7 @@ validators:
     key_metadata:
       description: Upper seal end depth in ft below ground surface (ft BGS)
       display_name: Upper Seal End Depth
+    static_mappings:
       SESAR: Upper Seal End Depth
     validators:
     - callable_builder: number
@@ -1702,6 +1851,7 @@ validators:
     key_metadata:
       description: Upper seal start depth in ft below ground surface (ft BGS)
       display_name: Upper Seal Start Depth
+    static_mappings:
       ENIGMA: Upper Seal Start Depth
     validators:
     - callable_builder: number
@@ -1717,6 +1867,7 @@ validators:
   upper_seal_type:
     key_metadata:
       display_name: Upper Seal Type
+    static_mappings:
       ENIGMA: Upper Seal Type
     validators:
     - callable_builder: noop
@@ -1725,6 +1876,7 @@ validators:
   vertical_datum:
     key_metadata:
       display_name: Vertical Datum
+    static_mappings:
       SESAR: Vertical Datum
     validators:
     - callable_builder: noop
@@ -1733,6 +1885,7 @@ validators:
   well:
     key_metadata:
       display_name: Well
+    static_mappings:
       ENIGMA: Well
     validators:
     - callable_builder: noop
@@ -1742,6 +1895,7 @@ validators:
     key_metadata:
       description: Well casing depth in ft below ground surface (ft BGS)
       display_name: Well Casing Depth
+    static_mappings:
       ENIGMA: Well Casing Depth
     validators:
     - callable_builder: number
@@ -1758,6 +1912,7 @@ validators:
     key_metadata:
       description: Well casing inner diameter. units in inches
       display_name: Well Casing ID
+    static_mappings:
       ENIGMA: Well Casing ID
     validators:
     - callable_builder: number
@@ -1775,6 +1930,7 @@ validators:
     key_metadata:
       description: Well casing outer diameter. units in inches
       display_name: Well Casing OD
+    static_mappings:
       ENIGMA: Well Casing OD
     validators:
     - callable_builder: number
@@ -1791,6 +1947,7 @@ validators:
   well_casing_type:
     key_metadata:
       display_name: Well Casing Type
+    static_mappings:
       ENIGMA: Well Casing Type
     validators:
     - callable_builder: noop
@@ -1799,6 +1956,7 @@ validators:
   well_name:
     key_metadata:
       display_name: Well Name
+    static_mappings:
       ENIGMA: Well Name
     validators:
     - callable_builder: noop
@@ -1807,6 +1965,7 @@ validators:
   well_status:
     key_metadata:
       display_name: Well Status
+    static_mappings:
       ENIGMA: Well Status
     validators:
     - callable_builder: noop
@@ -1815,6 +1974,7 @@ validators:
   zone:
     key_metadata:
       display_name: Zone
+    static_mappings:
       SESAR: Zone
     validators:
     - callable_builder: noop
