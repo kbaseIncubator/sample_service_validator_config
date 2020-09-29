@@ -1724,4 +1724,58 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  "nmdc:type":
+    key_metadata:
+      description:
+      display_name: NMDC sample type
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
 
+  "nmdc:mod_date":
+    key_metadata:
+      description:
+      display_name: NMDC modification date
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "nmdc:description_long":
+    key_metadata:
+      description:
+      display_name: NMDC study description
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "nmdc:ecosystem_category":
+    key_metadata:
+      description:
+      display_name: NMDC study ecosystem category
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "nmdc:specific_ecosystem":
+    key_metadata:
+      description:
+      display_name: NMDC specific ecosystem term
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "nmdc:doi":
+    key_metadata:
+      description:
+      display_name: NMDC study DOI
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  "nmdc:principal_investigator":
+    key_metadata:
+      description:
+      display_name: NMDC study Principal Investigator
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
