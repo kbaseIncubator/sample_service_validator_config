@@ -64,6 +64,25 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  collector_chief_scientist:
+    key_metadata:
+      display_name: Collector/Chief Scientist name
+    static_mappings:
+      SESAR: Collector/Chief Scientist name
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  collector_chief_scientist_address:
+    key_metadata:
+      display_name: Collector/Chief Scientist address
+    static_mappings:
+      SESAR: Collector/Chief Scientist address
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+
   coordinate_precision?:
     key_metadata:
       display_name: Coordinate Precision

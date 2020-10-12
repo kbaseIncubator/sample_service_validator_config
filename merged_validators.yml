@@ -241,6 +241,22 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
+  collector_chief_scientist:
+    key_metadata:
+      display_name: Collector/Chief Scientist name
+    static_mappings:
+      SESAR: Collector/Chief Scientist name
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  collector_chief_scientist_address:
+    key_metadata:
+      display_name: Collector/Chief Scientist address
+    static_mappings:
+      SESAR: Collector/Chief Scientist address
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   condition:
     key_metadata:
       display_name: Condition
@@ -990,10 +1006,31 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
+  nmdc:description_long:
+    key_metadata:
+      description: null
+      display_name: NMDC study description
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  nmdc:doi:
+    key_metadata:
+      description: null
+      display_name: NMDC study DOI
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   nmdc:ecosystem:
     key_metadata:
       description: null
       display_name: NMDC ecosystem term
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  nmdc:ecosystem_category:
+    key_metadata:
+      description: null
+      display_name: NMDC study ecosystem category
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
@@ -1008,6 +1045,20 @@ validators:
     key_metadata:
       description: null
       display_name: NMDC modification date
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  nmdc:principal_investigator:
+    key_metadata:
+      description: null
+      display_name: NMDC study Principal Investigator
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  nmdc:specific_ecosystem:
+    key_metadata:
+      description: null
+      display_name: NMDC specific ecosystem term
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
