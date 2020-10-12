@@ -1,16 +1,13 @@
+import os
 import yaml
 
 
 def validator_key_format(key):
     return key
 
-files = [
-    "ENIGMA.yml",
-    "SESAR.yml",
-    "SESAR-noops.yml",
-    "miscellaneous.yml"
-]
-files = ["validation_files/" + f for f in files]
+files = os.listdir('validation_files')
+files = ['validation_files/' + f for f in files]
+
 validators = {}
 prefix_validators = {}
 
@@ -23,18 +20,26 @@ for f in files:
         if data.get('validators'):
             for key, val in data['validators'].items():
                 if validators.get(key):
-                    # collission!
-                    continue
-                    # validators[key] = val
+                    # update static_mappings
+                    if data['validators'][key].get('static_mappings'):
+                        if validators[key].get('static_mappings'):
+                            for sub_key, sub_val in data['validators'][key]['static_mappings'].items():
+                                validators[key]['static_mappings'][sub_key] = sub_val
+                        else:
+                            validators[key]['static_mappings'] = data['validators'][key]['static_mappings']
                 else:
                     validators[key] = val
         # append all 
         if data.get('prefix_validators'):
             for key, val in data['prefix_validators'].items():
                 if prefix_validators.get(key):
-                    # collission!
-                    continue
-                    # prefix_validators[key] = val
+                    # update static_mappings
+                    if data['prefix_validators'][key].get('static_mappings'):
+                        if prefix_validators[key].get('static_mappings'):
+                            for sub_key, sub_val in data['prefix_validators'][key]['static_mappings'].items():
+                                prefix_validators[key]['static_mappings'][sub_key] = sub_val
+                        else:
+                            prefix_validators[key]['static_mappings'] = data['prefix_validators'][key]['static_mappings']
                 else:
                     prefix_validators[key] = val
 

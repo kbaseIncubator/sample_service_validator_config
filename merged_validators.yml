@@ -722,6 +722,7 @@ validators:
       display_name: Id
     static_mappings:
       ENIGMA: SampleID
+      SESAR: IGSN
     validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
