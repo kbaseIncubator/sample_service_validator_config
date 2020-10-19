@@ -769,6 +769,39 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  ENIGMA:material:
+    key_metadata:
+      display_name: Material
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ontology: envo_ontology
+        ancestor_term: ENVO:00010483
+        srv_wiz_url: https://kbase.us/services/service_wizard
+
+  SESAR:material:
+    key_metadata:
+      display_name: Material
+    validators:
+    - callable_builder: enum
+      module: SampleService.core.validator.builtin
+      parameters:
+        allowed-values:
+        - Biology
+        - Gas
+        - Ice
+        - Liquid>aqueous
+        - Liquid>organic
+        - Mineral
+        - NotApplicable
+        - Other
+        - Particulate
+        - Rock
+        - Sediment
+        - Soil
+        - Synthetic
+
   maturation_time:
     key_metadata:
       display_name: Maturation Time
