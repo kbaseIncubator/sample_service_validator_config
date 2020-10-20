@@ -1,4 +1,6 @@
 key	type	description	display_name	function 1	sub key 1	params 1	function 2	sub key 2	params 2	function 3	sub key 3	params 3	function 4	sub key 4	params 4
+ENIGMA:material	validators		Material	ontology_has_ancestor		ancestor_term ENVO:00010483;ontology envo_ontology;srv_wiz_url https://kbase.us/services/service_wizard;									
+SESAR:material	validators		Material	enum		allowed-values ['Biology', 'Gas', 'Ice', 'Liquid>aqueous', 'Liquid>organic', 'Mineral', 'NotApplicable', 'Other', 'Particulate', 'Rock', 'Sediment', 'Soil', 'Synthetic'];									
 age_max	validators	Maximum age in years	Age (max)	units	units	units years;	number	value	gte 0;						
 age_min	validators	minimum age in years	Age (min)	units	units	units years;	number	value	gte 0;						
 aodc	validators	units in cells per gram	AODC	number	value	gte 0.0;	units	units	units cells/g;						
@@ -20,6 +22,8 @@ collection_method	validators		Collection method	noop
 collection_method_description	validators		Collection method description	noop											
 collection_time	validators		Collection time	noop											
 collection_time_end	validators		Collection time (end)	noop											
+collector_chief_scientist	validators		Collector/Chief Scientist name	noop											
+collector_chief_scientist_address	validators		Collector/Chief Scientist address	noop											
 condition	validators		Condition	noop											
 conductivity	validators	conductivity in millisiemens per centimeter	Conductivity	number	value		units	units	units mS/cm;						
 continent	validators		Continent	noop											
@@ -88,9 +92,14 @@ name_of_physiographic_feature	validators		Name of physiographic feature	noop
 navigation_type	validators		Navigation type	noop											
 ncbi:taxonomy_name	validators		NCBI taxonomy name	noop											
 nmdc:community	validators		Community	noop											
+nmdc:description_long	validators		NMDC study description	noop											
+nmdc:doi	validators		NMDC study DOI	noop											
 nmdc:ecosystem	validators		NMDC ecosystem term	noop											
+nmdc:ecosystem_category	validators		NMDC study ecosystem category	noop											
 nmdc:env_local_scale_term	validators		NMDC environment term, local scale	noop											
 nmdc:mod_date	validators		NMDC modification date	noop											
+nmdc:principal_investigator	validators		NMDC study Principal Investigator	noop											
+nmdc:specific_ecosystem	validators		NMDC specific ecosystem term	noop											
 nmdc:type	validators		NMDC sample type	noop											
 northing	validators	Northing in meters	Northing	number	value		units	units	units m;						
 open	validators		Open	noop											

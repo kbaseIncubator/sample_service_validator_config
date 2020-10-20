@@ -227,6 +227,19 @@ validators:
         key: units
         units: ft
 
+  ENIGMA:material:
+    key_metadata:
+      display_name: Material
+    static_mappings:
+      ENIGMA: Material
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ontology: envo_ontology
+        ancestor_term: ENVO:00010483
+        srv_wiz_url: https://kbase.us/services/service_wizard
+
   filter:
     key_metadata:
       description: Filter pore size in microns

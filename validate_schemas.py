@@ -42,6 +42,18 @@ _META_VAL_JSONSCHEMA = {
     },
     'additionalProperties': False
 }
-with open("metadata_validation.yml") as f:
-    cfg = yaml.safe_load(f)
-validate(instance=cfg, schema=_META_VAL_JSONSCHEMA)
+
+files = [
+    "validation_files/ENIGMA-noops.yml",
+    "validation_files/SESAR-noops.yml",
+    "validation_files/SESAR.yml",
+    "validation_files/ENIGMA.yml",
+    "validation_files/miscellaneous.yml",
+    "merged_validators.yml",
+    "metadata_validation.yml"
+]
+
+for file in files:
+    with open(file) as f:
+        cfg = yaml.safe_load(f)
+    validate(instance=cfg, schema=_META_VAL_JSONSCHEMA)

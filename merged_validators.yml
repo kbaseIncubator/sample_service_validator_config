@@ -1,4 +1,37 @@
 validators:
+  ENIGMA:material:
+    key_metadata:
+      display_name: Material
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO:00010483
+        ontology: envo_ontology
+        srv_wiz_url: https://kbase.us/services/service_wizard
+  SESAR:material:
+    key_metadata:
+      display_name: Material
+    static_mappings:
+      Sesar: Material
+    validators:
+    - callable_builder: enum
+      module: SampleService.core.validator.builtin
+      parameters:
+        allowed-values:
+        - Biology
+        - Gas
+        - Ice
+        - Liquid>aqueous
+        - Liquid>organic
+        - Mineral
+        - NotApplicable
+        - Other
+        - Particulate
+        - Rock
+        - Sediment
+        - Soil
+        - Synthetic
   age_max:
     key_metadata:
       description: Maximum age in years

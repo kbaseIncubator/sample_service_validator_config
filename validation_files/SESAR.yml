@@ -279,6 +279,30 @@ validators:
         key: units
         units: pH
 
+  SESAR:material:
+    key_metadata:
+      display_name: Material
+    static_mappings:
+      SESAR: Material
+    validators:
+    - callable_builder: enum
+      module: SampleService.core.validator.builtin
+      parameters:
+        allowed-values:
+        - Biology
+        - Gas
+        - Ice
+        - Liquid>aqueous
+        - Liquid>organic
+        - Mineral
+        - NotApplicable
+        - Other
+        - Particulate
+        - Rock
+        - Sediment
+        - Soil
+        - Synthetic
+
   size:
     key_metadata:
       description: Size in meters cubed
