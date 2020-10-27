@@ -2,6 +2,8 @@ validators:
   ENIGMA:material:
     key_metadata:
       display_name: Material
+    static_mappings:
+      ENIGMA: Material
     validators:
     - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
@@ -13,7 +15,7 @@ validators:
     key_metadata:
       display_name: Material
     static_mappings:
-      Sesar: Material
+      SESAR: Material
     validators:
     - callable_builder: enum
       module: SampleService.core.validator.builtin
@@ -140,8 +142,12 @@ validators:
     static_mappings:
       ENIGMA: Biome
     validators:
-    - callable_builder: noop
+    - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO_00000428
+        ontology: envo_ontology
+        srv_wiz_url: https://kbase.us/services/service_wizard
   boncat_activity:
     key_metadata:
       description: units in cells per gram

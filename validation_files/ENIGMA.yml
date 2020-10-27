@@ -52,6 +52,19 @@ validators:
         key: units
         units: mg/g
 
+  biome:
+    key_metadata:
+      display_name: Biome
+    static_mappings:
+      ENIGMA: Biome
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ontology: envo_ontology
+        ancestor_term: ENVO_00000428
+        srv_wiz_url: https://kbase.us/services/service_wizard
+
   boncat_activity:
     key_metadata:
       description: units in cells per gram

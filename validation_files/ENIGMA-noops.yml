@@ -1,5 +1,4 @@
 validators:
-
   aquifer:
     key_metadata:
       display_name: Aquifer
@@ -14,15 +13,6 @@ validators:
       display_name: Area Name
     static_mappings:
       ENIGMA: Area Name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
-  biome:
-    key_metadata:
-      display_name: Biome
-    static_mappings:
-      ENIGMA: Biome
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
@@ -63,6 +53,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # geographical ontology
   continent:
     key_metadata:
       display_name: Continent
@@ -72,6 +63,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # geographical ontology
   country:
     key_metadata:
       display_name: Country
@@ -93,6 +85,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # enforce as some datetime
   date:
     key_metadata:
       display_name: Date
@@ -121,8 +114,10 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # Number
   elevation:
     key_metadata:
+      description: Elevation in meters above mean sea level (ft AMSL)
       display_name: Elevation
     static_mappings:
       ENIGMA: Elevation
@@ -131,6 +126,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # ENVO (?)
   env_package:
     key_metadata:
       display_name: Env_package
@@ -140,6 +136,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # ENVO?
   environmental_package:
     key_metadata:
       display_name: Environmental Package
@@ -158,6 +155,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # ENVO_01000813 'astronimical body part'
   feature:
     key_metadata:
       display_name: Feature
@@ -167,6 +165,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # based on ENVO: only permit light or heavy?
   fraction:
     key_metadata:
       display_name: Fraction
@@ -194,6 +193,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # ENVO "ENVO_00000191:solid astronomial body part" / geographical ontology
   geological_zone:
     key_metadata:
       display_name: Geological Zone
@@ -202,7 +202,6 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-
 
   launch_id:
     key_metadata:
@@ -332,6 +331,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # ENVO (?)
   packing_type:
     key_metadata:
       display_name: Packing Type
@@ -377,6 +377,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # geographical ontology
   region:
     key_metadata:
       display_name: Region
@@ -405,6 +406,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # ENVO (?)
   rock_formation:
     key_metadata:
       display_name: Rock Formation
@@ -441,6 +443,7 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
+  # geographical ontology
   state_province:
     key_metadata:
       display_name: State/Province
