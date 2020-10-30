@@ -8,6 +8,8 @@ def validator_key_format(key):
 
 # only argument should be output_file name
 
+print(sys.argv)
+
 if len(sys.argv) != 2:
     raise RuntimeError(f'Please provide output file path as sole argument to merge_validators.py')
 output_file = sys.argv[1]

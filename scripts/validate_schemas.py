@@ -1,5 +1,11 @@
+import sys
 import yaml
 from jsonschema import validate
+
+
+if len(sys.argv) != 2:
+    raise RuntimeError(f'Please provide file path as sole argument to validate_schemas.py')
+merged_file = sys.argv[1]
 
 _META_VAL_JSONSCHEMA = {
     'type': 'object',
@@ -49,7 +55,7 @@ files = [
     "validation_files/SESAR.yml",
     "validation_files/ENIGMA.yml",
     "validation_files/miscellaneous.yml",
-    "merged_validators.yml",
+    merged_file,
     "metadata_validation.yml"
 ]
 
