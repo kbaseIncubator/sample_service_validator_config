@@ -26,32 +26,20 @@ for f in files:
     with open(f) as f_in:
         origin_file = f.split('.')[0]
         data = yaml.load(f_in, Loader=yaml.SafeLoader)
-        # append all validators
-        if data.get('validators'):
-            for key, val in data['validators'].items():
-                if validators.get(key):
-                    # update static_mappings
-                    if data['validators'][key].get('static_mappings'):
-                        if validators[key].get('static_mappings'):
-                            for sub_key, sub_val in data['validators'][key]['static_mappings'].items():
-                                validators[key]['static_mappings'][sub_key] = sub_val
-                        else:
-                            validators[key]['static_mappings'] = data['validators'][key]['static_mappings']
-                else:
-                    validators[key] = val
-        # append all 
-        if data.get('prefix_validators'):
-            for key, val in data['prefix_validators'].items():
-                if prefix_validators.get(key):
-                    # update static_mappings
-                    if data['prefix_validators'][key].get('static_mappings'):
-                        if prefix_validators[key].get('static_mappings'):
-                            for sub_key, sub_val in data['prefix_validators'][key]['static_mappings'].items():
-                                prefix_validators[key]['static_mappings'][sub_key] = sub_val
-                        else:
-                            prefix_validators[key]['static_mappings'] = data['prefix_validators'][key]['static_mappings']
-                else:
-                    prefix_validators[key] = val
+        for val_type, val_data in [('validators', validators), ('prefix_validators', prefix_validators)]:
+            if data.get(val_type):
+                for key, val in data[val_type].items():
+                    if val_data.get(key):
+                        # update auxilliary fields
+                        for data_field in ['static_mappings', 'key_metadata']:
+                            if data[val_type][key].get(data_field):
+                                if val_data[key].get(data_field):
+                                    for sub_key, sub_val in data[val_type][key][data_field].items():
+                                        val_data[key][data_field][sub_key] = sub_val
+                                else:
+                                    val_data[key][data_field][sub_key] = data[val_type][key][data_field]
+                    else:
+                        val_data[key] = val
 
 v_keys = sorted(list(validators.keys()))
 pv_keys = sorted(list(prefix_validators.keys()))
@@ -66,4 +54,3 @@ with open(output_file, 'w') as f:
     yaml.dump(data, f)
 
 print(f"    Validators merged, written to {output_file}")
-

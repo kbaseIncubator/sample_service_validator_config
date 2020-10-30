@@ -563,6 +563,7 @@ validators:
         units: m
   elevation:
     key_metadata:
+      description: Elevation in meters above mean sea level (ft AMSL)
       display_name: Elevation
     static_mappings:
       ENIGMA: Elevation

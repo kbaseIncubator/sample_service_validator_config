@@ -46,7 +46,7 @@ drive_casing_od	validators	drive casing outer diameter in inches	Drive Casing OD
 drive_casing_start_depth	validators	units in ft below ground surface (ft BGS)	Drive Casing Start Depth	number	value		units	units	units ft;						
 drive_casing_type	validators		Drive Casing Type	noop											
 easting	validators	Easting in meters	Easting	number	value		units	units	units m;						
-elevation	validators		Elevation	noop											
+elevation	validators	Elevation in meters above mean sea level (ft AMSL)	Elevation	noop											
 elevation_end	validators	Elevation end in meters	Elevation end	units	units	units meters;	number	value	required True;						
 elevation_start	validators	Elevation start in meters	Elevation start	units	units	units meters;	number	value	required True;						
 env_package	validators		Env_package	noop											
