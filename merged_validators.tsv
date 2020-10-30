@@ -8,7 +8,7 @@ aquifer	validators		Aquifer	noop
 area_name	validators		Area Name	noop											
 average_water_level	validators	units in ft above mean sea level (ft AMSL)	Average Water Level	number	value		units	units	units ft;						
 biomass_carbon	validators	units in milligrams per gram	Biomass Carbon	number	value	gte 0.0;	units	units	units mg/g;						
-biome	validators		Biome	noop											
+biome	validators		Biome	ontology_has_ancestor		ancestor_term ENVO_00000428;ontology envo_ontology;srv_wiz_url https://kbase.us/services/service_wizard;									
 boncat_activity	validators	units in cells per gram	BONCAT Activity	number	value	gte 0.0;	units	units	units cells/g;						
 boring	validators	boring depth in ft below groud surface (ft BGS)	Boring depth	number	value		units	units	units ft;						
 boring_diameter	validators	boring diameter in inches	Boring Diameter	number	value	gte 0.0;	units	units	units in;						
@@ -52,7 +52,7 @@ elevation_start	validators	Elevation start in meters	Elevation start	units	units
 env_package	validators		Env_package	noop											
 environmental_package	validators		Environmental Package	noop											
 experiment_name	validators		Experiment Name	noop											
-feature	validators		Feature	noop											
+feature	validators		Feature	ontology_has_ancestor		ancestor_term ENVO_01000813;ontology envo_ontology;srv_wiz_url https://kbase.us/services/service_wizard;									
 field_name_informal_classification	validators		Field name (informal classification)	noop											
 field_program_cruise	validators		Field program/cruise	noop											
 filter	validators	Filter pore size in microns	Filter	number	value		units	units	units microns;						

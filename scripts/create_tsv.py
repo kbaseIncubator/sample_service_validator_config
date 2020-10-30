@@ -1,9 +1,14 @@
+import sys
 import yaml
 import pandas as pd
 
 
-with open('merged_validators.yml') as f:
-	data = yaml.load(f)
+if len(sys.argv) != 2:
+    raise RuntimeError(f'Please provide input file path as sole argument to merge_validators.py')
+input_file = sys.argv[1]
+
+with open(input_file) as f:
+	data = yaml.load(f, Loader=yaml.SafeLoader)
 
 df_data = {
     'key': [], 'type': [],
@@ -46,8 +51,8 @@ for val_str in ['validators', 'prefix_validators']:
                 df_data['params ' + str(i+1)].append("")
             # print(f"iteration {ite}: ", {k:len(v) for k,v in df_data.items()})
             ite +=1
-print({k:len(v) for k,v in df_data.items()})
-
 df = pd.DataFrame.from_dict(df_data)
-print(df.head(10))
-df.to_csv("merged_validators.tsv", sep="\t", index=False)
+
+output_file = input_file.split('.')[0] + '.tsv'
+df.to_csv(output_file, sep="\t", index=False)
+print(f'    tsv viewer file for {input_file} written to {output_file}.')

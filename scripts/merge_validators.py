@@ -1,9 +1,19 @@
 import os
+import sys
 import yaml
 
 
 def validator_key_format(key):
     return key
+
+# only argument should be output_file name
+
+if len(sys.argv) != 2:
+    raise RuntimeError(f'Please provide output file path as sole argument to merge_validators.py')
+output_file = sys.argv[1]
+
+if not output_file.endswith('.yml') and not output_file.endswith('.yaml') :
+    output_file = output_file + '.yml'
 
 files = os.listdir('validation_files')
 files = ['validation_files/' + f for f in files]
@@ -52,7 +62,8 @@ if validators:
 if prefix_validators:
     data['prefix_validators'] = prefix_validators
 
-with open('merged_validators.yml', 'w') as f:
+with open(output_file, 'w') as f:
     yaml.dump(data, f)
 
+print(f"    Validators merged, written to {output_file}")
 
