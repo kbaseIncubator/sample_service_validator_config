@@ -155,16 +155,6 @@ validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
 
-  # ENVO_01000813 'astronimical body part'
-  feature:
-    key_metadata:
-      display_name: Feature
-    static_mappings:
-      ENIGMA: Feature
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
   # based on ENVO: only permit light or heavy?
   fraction:
     key_metadata:

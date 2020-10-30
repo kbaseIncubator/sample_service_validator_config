@@ -636,8 +636,12 @@ validators:
     static_mappings:
       ENIGMA: Feature
     validators:
-    - callable_builder: noop
+    - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO_01000813
+        ontology: envo_ontology
+        srv_wiz_url: https://kbase.us/services/service_wizard
   field_name_informal_classification:
     key_metadata:
       display_name: Field name (informal classification)

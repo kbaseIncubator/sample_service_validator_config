@@ -15,7 +15,7 @@ prefix_validators = {}
 for f in files:
     with open(f) as f_in:
         origin_file = f.split('.')[0]
-        data = yaml.load(f_in)
+        data = yaml.load(f_in, Loader=yaml.SafeLoader)
         # append all validators
         if data.get('validators'):
             for key, val in data['validators'].items():

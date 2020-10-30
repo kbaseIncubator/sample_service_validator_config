@@ -253,6 +253,20 @@ validators:
         ancestor_term: ENVO:00010483
         srv_wiz_url: https://kbase.us/services/service_wizard
 
+  # ENVO_01000813 'astronimical body part'
+  feature:
+    key_metadata:
+      display_name: Feature
+    static_mappings:
+      ENIGMA: Feature
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ontology: envo_ontology
+        ancestor_term: ENVO_01000813
+        srv_wiz_url: https://kbase.us/services/service_wizard
+
   filter:
     key_metadata:
       description: Filter pore size in microns
