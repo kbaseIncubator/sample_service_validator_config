@@ -21,24 +21,22 @@ def findDiff(d1, d2, path=""):
             raise Exception('Current merged validators do not match files in validation_files directory')
         else:
             if type(d1[k]) is dict:
-                path = path + "->" + k
-                findDiff(d1[k],d2[k], path)
+                findDiff(d1[k],d2[k], path + "->" + k)
             if type(d1[k]) is list:
                 for i, item in enumerate(d1[k]):
-                    path = path + "->" + k + '->' + str(i)
                     if type(item) in (int, float, bool, str):
                         if d1[k][i] != d2[k][i]:
-                            print (path, ":")
-                            print (" - ", k,f" {i}: ", d1[k][i])
-                            print (" + ", k,f" {i}: ", d2[k][i])
+                            print("Path:", path, ":")
+                            print(" - ", k,f" {i}: ", d1[k][i])
+                            print(" + ", k,f" {i}: ", d2[k][i])
                             raise Exception('Current merged validators do not match files in validation_files directory')
                     else:
-                        findDiff(d1[k][i], d2[k][i], path)
+                        findDiff(d1[k][i], d2[k][i], path + "->" + k + '->' + str(i))
             else:
                 if d1[k] != d2[k]:
-                    print (path, ":")
-                    print (" - ", k," : ", d1[k])
-                    print (" + ", k," : ", d2[k])
+                    print("Path:", path, ":")
+                    print(" - ", k," : ", d1[k])
+                    print(" + ", k," : ", d2[k])
                     raise Exception('Current merged validators do not match files in validation_files directory')
 
 findDiff(merged_data, temp_data)

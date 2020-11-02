@@ -87,7 +87,7 @@ max_water_level	validators	Maximum water level in ft above mean sea level (ft AM
 method	validators		Method	noop											
 min_water_level	validators	Minimum water level in ft above mean sea level (ft AMSL)	Min Water Level	number	value		units	units	units ft;						
 moisture	validators	percent moisture	Moisture	number	value	gte 0.0;lte 100.0;	units	units	units percent;						
-name	validators	name validator	Sample Name	string		max-len 120;									
+name	validators	name validator	Sample Name	string		max-len 240;									
 name_of_physiographic_feature	validators		Name of physiographic feature	noop											
 navigation_type	validators		Navigation type	noop											
 ncbi:taxonomy_name	validators		NCBI taxonomy name	noop											
