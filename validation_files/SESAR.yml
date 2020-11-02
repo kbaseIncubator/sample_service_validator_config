@@ -228,7 +228,7 @@ validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
       parameters:
-        max-len: 120
+        max-len: 240
 
   northing:
     key_metadata:

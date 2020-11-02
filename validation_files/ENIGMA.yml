@@ -449,13 +449,12 @@ validators:
       description: name validator
       display_name: Sample Name
     static_mappings:
-      SESAR: Sample Name
       ENIGMA: Sample Name
     validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
       parameters:
-        max-len: 120
+        max-len: 240
 
   open_casing_depth:
     key_metadata:
