@@ -52,6 +52,19 @@ validators:
         key: units
         units: mg/g
 
+  biome:
+    key_metadata:
+      display_name: Biome
+    static_mappings:
+      ENIGMA: Biome
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ontology: envo_ontology
+        ancestor_term: ENVO_00000428
+        srv_wiz_url: https://kbase.us/services/service_wizard
+
   boncat_activity:
     key_metadata:
       description: units in cells per gram
@@ -240,6 +253,20 @@ validators:
         ancestor_term: ENVO:00010483
         srv_wiz_url: https://kbase.us/services/service_wizard
 
+  # ENVO_01000813 'astronimical body part'
+  feature:
+    key_metadata:
+      display_name: Feature
+    static_mappings:
+      ENIGMA: Feature
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ontology: envo_ontology
+        ancestor_term: ENVO_01000813
+        srv_wiz_url: https://kbase.us/services/service_wizard
+
   filter:
     key_metadata:
       description: Filter pore size in microns
@@ -422,13 +449,12 @@ validators:
       description: name validator
       display_name: Sample Name
     static_mappings:
-      SESAR: Sample Name
       ENIGMA: Sample Name
     validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
       parameters:
-        max-len: 120
+        max-len: 240
 
   open_casing_depth:
     key_metadata:

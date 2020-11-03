@@ -2,6 +2,8 @@ validators:
   ENIGMA:material:
     key_metadata:
       display_name: Material
+    static_mappings:
+      ENIGMA: Material
     validators:
     - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
@@ -13,7 +15,7 @@ validators:
     key_metadata:
       display_name: Material
     static_mappings:
-      Sesar: Material
+      SESAR: Material
     validators:
     - callable_builder: enum
       module: SampleService.core.validator.builtin
@@ -140,8 +142,12 @@ validators:
     static_mappings:
       ENIGMA: Biome
     validators:
-    - callable_builder: noop
+    - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO_00000428
+        ontology: envo_ontology
+        srv_wiz_url: https://kbase.us/services/service_wizard
   boncat_activity:
     key_metadata:
       description: units in cells per gram
@@ -557,6 +563,7 @@ validators:
         units: m
   elevation:
     key_metadata:
+      description: Elevation in meters above mean sea level (ft AMSL)
       display_name: Elevation
     static_mappings:
       ENIGMA: Elevation
@@ -630,8 +637,12 @@ validators:
     static_mappings:
       ENIGMA: Feature
     validators:
-    - callable_builder: noop
+    - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO_01000813
+        ontology: envo_ontology
+        srv_wiz_url: https://kbase.us/services/service_wizard
   field_name_informal_classification:
     key_metadata:
       display_name: Field name (informal classification)
@@ -1008,7 +1019,7 @@ validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
       parameters:
-        max-len: 120
+        max-len: 240
   name_of_physiographic_feature:
     key_metadata:
       display_name: Name of physiographic feature

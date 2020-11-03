@@ -8,7 +8,7 @@ aquifer	validators		Aquifer	noop
 area_name	validators		Area Name	noop											
 average_water_level	validators	units in ft above mean sea level (ft AMSL)	Average Water Level	number	value		units	units	units ft;						
 biomass_carbon	validators	units in milligrams per gram	Biomass Carbon	number	value	gte 0.0;	units	units	units mg/g;						
-biome	validators		Biome	noop											
+biome	validators		Biome	ontology_has_ancestor		ancestor_term ENVO_00000428;ontology envo_ontology;srv_wiz_url https://kbase.us/services/service_wizard;									
 boncat_activity	validators	units in cells per gram	BONCAT Activity	number	value	gte 0.0;	units	units	units cells/g;						
 boring	validators	boring depth in ft below groud surface (ft BGS)	Boring depth	number	value		units	units	units ft;						
 boring_diameter	validators	boring diameter in inches	Boring Diameter	number	value	gte 0.0;	units	units	units in;						
@@ -46,13 +46,13 @@ drive_casing_od	validators	drive casing outer diameter in inches	Drive Casing OD
 drive_casing_start_depth	validators	units in ft below ground surface (ft BGS)	Drive Casing Start Depth	number	value		units	units	units ft;						
 drive_casing_type	validators		Drive Casing Type	noop											
 easting	validators	Easting in meters	Easting	number	value		units	units	units m;						
-elevation	validators		Elevation	noop											
+elevation	validators	Elevation in meters above mean sea level (ft AMSL)	Elevation	noop											
 elevation_end	validators	Elevation end in meters	Elevation end	units	units	units meters;	number	value	required True;						
 elevation_start	validators	Elevation start in meters	Elevation start	units	units	units meters;	number	value	required True;						
 env_package	validators		Env_package	noop											
 environmental_package	validators		Environmental Package	noop											
 experiment_name	validators		Experiment Name	noop											
-feature	validators		Feature	noop											
+feature	validators		Feature	ontology_has_ancestor		ancestor_term ENVO_01000813;ontology envo_ontology;srv_wiz_url https://kbase.us/services/service_wizard;									
 field_name_informal_classification	validators		Field name (informal classification)	noop											
 field_program_cruise	validators		Field program/cruise	noop											
 filter	validators	Filter pore size in microns	Filter	number	value		units	units	units microns;						
@@ -87,7 +87,7 @@ max_water_level	validators	Maximum water level in ft above mean sea level (ft AM
 method	validators		Method	noop											
 min_water_level	validators	Minimum water level in ft above mean sea level (ft AMSL)	Min Water Level	number	value		units	units	units ft;						
 moisture	validators	percent moisture	Moisture	number	value	gte 0.0;lte 100.0;	units	units	units percent;						
-name	validators	name validator	Sample Name	string		max-len 120;									
+name	validators	name validator	Sample Name	string		max-len 240;									
 name_of_physiographic_feature	validators		Name of physiographic feature	noop											
 navigation_type	validators		Navigation type	noop											
 ncbi:taxonomy_name	validators		NCBI taxonomy name	noop											
