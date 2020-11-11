@@ -176,7 +176,7 @@ validators:
     - callable_builder: string
       module: SampleService.core.validator.builtin
       parameters:
-        max-len: 120
+        max-len: 240
 
   latitude:
     key_metadata:
@@ -258,7 +258,7 @@ validators:
       module: SampleService.core.validator.builtin
       parameters:
         keys: value
-        max-len: 120
+        max-len: 240
 
   ph:
     key_metadata:

@@ -67,7 +67,7 @@ gold:ecosystem_type	validators		Ecosystem Type	noop
 gold:habitat	validators		Habitat	noop											
 gold:study_id	validators		GOLD study identifier	noop											
 ground_elevation	validators	ground elevation in ft above mean sea level (ft AMSL)	Ground Elevation	number	value		units	units	units ft;						
-id	validators	Unique identifier for the Sample	Id	string		max-len 120;									
+id	validators	Unique identifier for the Sample	Id	string		max-len 240;									
 igsn	validators		IGSN	noop											
 installation_method	validators		Installation Method	noop											
 latitude	validators	Latitude in degrees	Latitude	units	units	units degrees;	number	value	gte -90.0;lte 90.0;						
@@ -121,7 +121,7 @@ other_names	validators		Other name(s)	noop
 packing_depth_end	validators	Packind depth end in ft below ground surface (ft BGS)	Packing Depth End	number	value		units	units	units ft;						
 packing_depth_start	validators	Packind depth start in ft below ground surface (ft BGS)	Packing Depth Start	number	value		units	units	units ft;						
 packing_type	validators		Packing Type	noop											
-parent_id	validators	id field of parent	Parent ID	string	value	max-len 120;									
+parent_id	validators	id field of parent	Parent ID	string	value	max-len 240;									
 parent_igsn	validators		Parent IGSN	noop											
 ph	validators	pH of sample	pH	number	value	gte -10.0;lte 20.0;	units	units	units pH;						
 platform_name	validators		Platform name	noop											
