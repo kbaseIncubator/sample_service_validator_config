@@ -50,7 +50,8 @@ if validators:
 if prefix_validators:
     data['prefix_validators'] = prefix_validators
 
+# try default_style with quotes here.
 with open(output_file, 'w') as f:
-    yaml.dump(data, f)
+    yaml.dump(data, f)  #, default_style='"')
 
 print(f"    Validators merged, written to {output_file}")
