@@ -1,4 +1,4 @@
-VALIDATION_FILE=merged_validators.yml
+VALIDATION_FILE=metadata_validation.yml
 TEMP_FILE=temp_file.yml
 
 test:
