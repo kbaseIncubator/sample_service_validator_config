@@ -62,7 +62,7 @@ validators:
       module: SampleService.core.validator.builtin
       parameters:
         ontology: envo_ontology
-        ancestor_term: ENVO_00000428
+        ancestor_term: ENVO:00000428
         srv_wiz_url: https://kbase.us/services/service_wizard
 
   boncat_activity:
@@ -264,7 +264,7 @@ validators:
       module: SampleService.core.validator.builtin
       parameters:
         ontology: envo_ontology
-        ancestor_term: ENVO_01000813
+        ancestor_term: ENVO:01000813
         srv_wiz_url: https://kbase.us/services/service_wizard
 
   filter:
