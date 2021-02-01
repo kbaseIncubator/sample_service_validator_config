@@ -1,0 +1,36 @@
+ENIGMA:material:
+  key_metadata:
+    display_name: Material
+  static_mappings:
+    ENIGMA: Material
+  validators:
+  - callable_builder: ontology_has_ancestor
+    module: SampleService.core.validator.builtin
+    parameters:
+      ancestor_term: ENVO:00010483
+      ontology: envo_ontology
+      srv_wiz_url: https://kbase.us/services/service_wizard
+biome:
+  key_metadata:
+    display_name: Biome
+  static_mappings:
+    ENIGMA: Biome
+  validators:
+  - callable_builder: ontology_has_ancestor
+    module: SampleService.core.validator.builtin
+    parameters:
+      ancestor_term: ENVO:00000428
+      ontology: envo_ontology
+      srv_wiz_url: https://kbase.us/services/service_wizard
+feature:
+  key_metadata:
+    display_name: Feature
+  static_mappings:
+    ENIGMA: Feature
+  validators:
+  - callable_builder: ontology_has_ancestor
+    module: SampleService.core.validator.builtin
+    parameters:
+      ancestor_term: ENVO:01000813
+      ontology: envo_ontology
+      srv_wiz_url: https://kbase.us/services/service_wizard
