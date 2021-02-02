@@ -3,11 +3,18 @@ import sys
 import yaml
 
 
-def find_ontology_validator(data_field, key, val, ontology_validators):
+def find_ontology_validator(data_field, key, ontology_validators):
     if data_field[key].get('validators'):
         for validator in data_field[key]['validators']:
             if validator['callable_builder'] == 'ontology_has_ancestor':
-                ontology_validators[key] = val
+                if not ontology_validators.get(key):
+                    ontology_validators[key] = []
+                ontology_validators[key].append({
+                    "validator_type": "ontology_has_ancestor",
+                    "ontology": validator.get('parameters', {}).get('ontology'),
+                    "ancestor_term": validator.get('parameters', {}).get('ancestor_term'),
+                    "display_name": data_field[key].get('key_metadata', {}).get('display_name')
+                })
     return ontology_validators
 
 
@@ -41,7 +48,7 @@ def merge_validation_files(files, output_file, ontology_file):
             if data.get(val_type):
                 for key, val in data[val_type].items():
                     ontology_validators = find_ontology_validator(
-                        data[val_type], key, val, ontology_validators
+                        data[val_type], key, ontology_validators
                     )
                     val_data = merge_to_existing_validators(
                         val_type, val_data, key, val, data
