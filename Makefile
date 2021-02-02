@@ -9,6 +9,7 @@ test:
 	python3 scripts/validate_schemas.py $(VALIDATION_FILE) $(SAMPLE_SERVICE_SCHEMA)
 	python3 scripts/merge_validators.py $(TEMP_FILE) $(TEMP_FILE_2)
 	python3 scripts/check_if_updated.py $(VALIDATION_FILE) $(TEMP_FILE)
+	python3 scripts/check_if_updated.py $(ONTOLOGY_FILE) $(TEMP_FILE_2)
 	rm $(TEMP_FILE)
 	rm $(TEMP_FILE_2)
 
