@@ -3,51 +3,55 @@ import yaml
 from jsonschema import validate
 
 
-if len(sys.argv) != 2:
-    raise RuntimeError(f'Please provide file path as sole argument to validate_schemas.py')
+if len(sys.argv) != 3:
+    raise RuntimeError(f'Please provide validation file and json schema file as arguments to validate_schemas.py')
 merged_file = sys.argv[1]
+json_schema_file = sys.argv[2]
 
-_META_VAL_JSONSCHEMA = {
-    'type': 'object',
-    'definitions': {
-        'validator_set': {
-            'type': 'object',
-            # validate values only
-            'additionalProperties': {
-                'type': 'object',
-                'properties': {
-                    'key_metadata': {
-                        'type': 'object',
-                        'additionalProperties': {
-                            'type': ['number', 'boolean', 'string', 'null']
-                        }
-                    },
-                    'validators': {
-                        'type': 'array',
-                        'items': {
-                            'type': 'object',
-                            'properties': {
-                                'module': {'type': 'string'},
-                                'callable_builder': {'type': 'string'},
-                                'parameters': {'type': 'object'}
-                            },
-                            'additionalProperties': False,
-                            'required': ['module', 'callable_builder']
-                        }
+with open(json_schema_file) as f:
+    _META_VAL_JSONSCHEMA = yaml.safe_load(f)
 
-                    }
-                },
-                'required': ['validators']
-            }
-        },
-        'additionalProperties': False,
-    },
-    'properties': {
-        'validators': {'$ref': '#/definitions/validator_set'},
-        'prefix_validators': {'$ref': '#/definitions/validator_set'},
-    },
-    'additionalProperties': False
-}
+# _META_VAL_JSONSCHEMA = {
+#     'type': 'object',
+#     'definitions': {
+#         'validator_set': {
+#             'type': 'object',
+#             # validate values only
+#             'additionalProperties': {
+#                 'type': 'object',
+#                 'properties': {
+#                     'key_metadata': {
+#                         'type': 'object',
+#                         'additionalProperties': {
+#                             'type': ['number', 'boolean', 'string', 'null']
+#                         }
+#                     },
+#                     'validators': {
+#                         'type': 'array',
+#                         'items': {
+#                             'type': 'object',
+#                             'properties': {
+#                                 'module': {'type': 'string'},
+#                                 'callable_builder': {'type': 'string'},
+#                                 'parameters': {'type': 'object'}
+#                             },
+#                             'additionalProperties': False,
+#                             'required': ['module', 'callable_builder']
+#                         }
+
+#                     }
+#                 },
+#                 'required': ['validators']
+#             }
+#         },
+#         'additionalProperties': False,
+#     },
+#     'properties': {
+#         'validators': {'$ref': '#/definitions/validator_set'},
+#         'prefix_validators': {'$ref': '#/definitions/validator_set'},
+#     },
+#     'additionalProperties': False
+# }
 
 files = [
     "validation_files/ENIGMA-noops.yml",
