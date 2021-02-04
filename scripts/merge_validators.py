@@ -3,6 +3,12 @@ import sys
 import yaml
 
 
+ONTOLOGY_MAPPING = {
+    "envo_ontology": "ENVO_terms",
+    "go_ontology": "GO_terms"
+}
+
+
 def find_ontology_validator(data_field, key, ontology_validators):
     if data_field[key].get('validators'):
         for validator in data_field[key]['validators']:
@@ -12,6 +18,7 @@ def find_ontology_validator(data_field, key, ontology_validators):
                 ontology_validators[key].append({
                     "validator_type": "ontology_has_ancestor",
                     "ontology": validator.get('parameters', {}).get('ontology'),
+                    "ontology_collection": ONTOLOGY_MAPPING.get(validator.get('parameters', {}).get('ontology'), ""),
                     "ancestor_term": validator.get('parameters', {}).get('ancestor_term'),
                     "display_name": data_field[key].get('key_metadata', {}).get('display_name')
                 })
