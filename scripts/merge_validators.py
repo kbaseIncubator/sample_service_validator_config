@@ -1,15 +1,11 @@
 import os
 import sys
 import yaml
+import requests
+from ontology_utils import create_ontology_mapping
 
 
-ONTOLOGY_MAPPING = {
-    "envo_ontology": "ENVO_terms",
-    "go_ontology": "GO_terms"
-}
-
-
-def find_ontology_validator(data_field, key, ontology_validators):
+def find_ontology_validator(data_field, key, ontology_validators, ONTOLOGY_MAPPING):
     if data_field[key].get('validators'):
         for validator in data_field[key]['validators']:
             if validator['callable_builder'] == 'ontology_has_ancestor':
@@ -40,10 +36,11 @@ def merge_to_existing_validators(val_type, val_data, key, val, data):
     return val_data
 
 
-def merge_validation_files(files, output_file, ontology_file):
+def merge_validation_files(files, output_file, ontology_file, env):
     validators = {}
     prefix_validators = {}
     ontology_validators = {}
+    ONTOLOGY_MAPPING = create_ontology_mapping(env)
 
     for f in files:
         origin_file = f.split('.')[0]
@@ -55,7 +52,7 @@ def merge_validation_files(files, output_file, ontology_file):
             if data.get(val_type):
                 for key, val in data[val_type].items():
                     ontology_validators = find_ontology_validator(
-                        data[val_type], key, ontology_validators
+                        data[val_type], key, ontology_validators, ONTOLOGY_MAPPING
                     )
                     val_data = merge_to_existing_validators(
                         val_type, val_data, key, val, data
@@ -79,19 +76,25 @@ def merge_validation_files(files, output_file, ontology_file):
 
 if __name__ == "__main__":
     # assert correct number of arguments.
-    if len(sys.argv) < 3:
-        raise RuntimeError('Please provide both output file and ontology '
+    if len(sys.argv) < 4:
+        raise RuntimeError('Please provide the environment, output file and ontology '
                            'file paths as arguments to merge_validators.py')
-    if len(sys.argv) > 3:
+    if len(sys.argv) > 4:
         raise RuntimeError("Too many arguments for merge_validators.py")
     # get input files
     output_file = sys.argv[1]
     ontology_file = sys.argv[2]
+    env = str(sys.argv[3])
+    env = env.lower()
+    print(f"Running merge_validators to output files {output_file} and {ontology_file} in environment '{env}'.")
+    # make sure env is a valid environment
+    if env not in ['ci', 'appdev', 'narrative', 'narrative-dev']:
+        raise ValueError(f"environment '{env}' not in approved list of environments ['ci', 'appdev', 'narrative', 'narrative-dev']")
     if not output_file.endswith('.yml') and not output_file.endswith('.yaml'):
         output_file = output_file + '.yml'
     if not ontology_file.endswith('.yml') and not ontology_file.endswith('.yaml'):
         ontology_file = ontology_file + '.yml'
     files = os.listdir('validation_files')
     files = ['validation_files/' + f for f in files]
-    merge_validation_files(files, output_file, ontology_file)
+    merge_validation_files(files, output_file, ontology_file, env)
     print(f"    Validators merged, written to {output_file}")
