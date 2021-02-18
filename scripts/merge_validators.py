@@ -1,7 +1,6 @@
 import os
 import sys
 import yaml
-import requests
 from ontology_utils import create_ontology_mapping
 
 
