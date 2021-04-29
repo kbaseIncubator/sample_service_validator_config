@@ -1,0 +1,91 @@
+namespace: gold
+validators:
+  habitat:
+    key_metadata:
+      description: Sample Habitat (MIGS-6)
+      display_name: Habitat
+      example: Lake sediment
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  community:
+    key_metadata:
+      description: Community Sampled
+      display_name: Community
+      example: microbial communities
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  ecosystem:
+    key_metadata:
+      description: Ecosystem (GOLD)
+      display_name: Ecosystem (GOLD)
+      example: Environmental
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  ecosystem_category:
+    key_metadata:
+      description: Ecosystem Category (GOLD)
+      display_name: Ecosystem Category
+      example: Aquatic
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  ecosystem_type:
+    key_metadata:
+      description: Ecosystem Type (GOLD)
+      display_name: Ecosystem Type
+      example: Freshwater
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  ecosystem_subtype:
+    key_metadata:
+      description: Ecosystem Subtype (GOLD)
+      display_name: Ecosystem Subtype
+      example: Lake
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  ecosystem_path_id:
+    key_metadata:
+      description: Ecosystem Path ID (GOLD)
+      display_name: Ecosystem Path ID
+      example: 3948
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  study_id:
+    key_metadata:
+      description: GOLD study identifier
+      display_name: GOLD study identifier
+      example: Gs0131983
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  biosample_id:
+    key_metadata:
+      description: GOLD biosample identifier
+      display_name: Ecosystem Type
+      example: Gb0291112
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+
+  specific_ecosystem:
+    key_metadata:
+      description: Specific Ecosystem (GOLD)
+      display_name: Specific Ecosystem Term
+      example: Sediment
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin

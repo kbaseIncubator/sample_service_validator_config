@@ -59,6 +59,8 @@ files = [
     "validation_files/SESAR.yml",
     "validation_files/ENIGMA.yml",
     "validation_files/miscellaneous.yml",
+    "validation_files/core.yml",
+    "validation_files/gold.yml",
     merged_file,
     "metadata_validation.yml"
 ]

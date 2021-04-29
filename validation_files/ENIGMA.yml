@@ -1,8 +1,11 @@
+# This will be prefixed to all the keys below.
+namespace: enigma
 validators:
   aodc:
     key_metadata:
       description: units in cells per gram
       display_name: AODC
+      example: 200456.8368
     static_mappings:
       ENIGMA: AODC
     validators:
@@ -21,6 +24,7 @@ validators:
     key_metadata:
       description: units in ft above mean sea level (ft AMSL)
       display_name: Average Water Level
+      example: 1006.01
     static_mappings:
       ENIGMA: Average Water Level
     validators:
@@ -38,6 +42,7 @@ validators:
     key_metadata:
       description: units in milligrams per gram
       display_name: Biomass Carbon
+      example: 0.98
     static_mappings:
       ENIGMA: Biomass Carbon
     validators:
@@ -52,23 +57,11 @@ validators:
         key: units
         units: mg/g
 
-  biome:
-    key_metadata:
-      display_name: Biome
-    static_mappings:
-      ENIGMA: Biome
-    validators:
-    - callable_builder: ontology_has_ancestor
-      module: SampleService.core.validator.builtin
-      parameters:
-        ontology: envo_ontology
-        ancestor_term: ENVO:00000428
-        srv_wiz_url: https://kbase.us/services/service_wizard
-
   boncat_activity:
     key_metadata:
       description: units in cells per gram
       display_name: BONCAT Activity
+      example: 1.27E+06
     static_mappings:
       ENIGMA: BONCAT Activity
     validators:
@@ -87,6 +80,7 @@ validators:
     key_metadata:
       description: boring depth in ft below groud surface (ft BGS)
       display_name: Boring depth
+      example: 50.25
     static_mappings:
       ENIGMA: Boring depth
     validators:
@@ -104,6 +98,7 @@ validators:
     key_metadata:
       description: boring diameter in inches
       display_name: Boring Diameter
+      example: 8
     static_mappings:
       ENIGMA: Boring Diameter
     validators:
@@ -122,6 +117,7 @@ validators:
     key_metadata:
       description: conductivity in millisiemens per centimeter
       display_name: Conductivity
+      example: 802.65
     static_mappings:
       ENIGMA: Conductivity
     validators:
@@ -135,28 +131,13 @@ validators:
         key: units
         units: mS/cm
 
-  depth:
-    key_metadata:
-      description: depth in centimeters below ground surface (cm BGS)
-      display_name: Depth
-    static_mappings:
-      SESAR: Depth
-      ENIGMA: Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: cm
+  # Moved to core in (m) depth_bgs
 
   dna_picogreen_total:
     key_metadata:
       description: units in nanograms
       display_name: DNA Picogreen Total
+      example: 228.6658163
     static_mappings:
       ENIGMA: DNA Picogreen Total
     validators:
@@ -174,6 +155,7 @@ validators:
     key_metadata:
       description: drive casing end depth in ft below ground surface (ft BGS)
       display_name: Drive Casing End Depth
+      example: 27
     static_mappings:
       ENIGMA: Drive Casing End Depth
     validators:
@@ -191,6 +173,7 @@ validators:
     key_metadata:
       description: drive casing inner diameter in inches
       display_name: Drive Casing ID
+      example: 2.625
     static_mappings:
       ENIGMA: Drive Casing ID
     validators:
@@ -209,6 +192,7 @@ validators:
     key_metadata:
       description: drive casing outer diameter in inches
       display_name: Drive Casing OD
+      example: 3.25
     static_mappings:
       ENIGMA: Drive Casing OD
     validators:
@@ -227,6 +211,7 @@ validators:
     key_metadata:
       description: units in ft below ground surface (ft BGS)
       display_name: Drive Casing Start Depth
+      example: 10
     static_mappings:
       ENIGMA: Drive Casing Start Depth
     validators:
@@ -240,37 +225,14 @@ validators:
         key: units
         units: ft
 
-  ENIGMA:material:
-    key_metadata:
-      display_name: Material
-    static_mappings:
-      ENIGMA: Material
-    validators:
-    - callable_builder: ontology_has_ancestor
-      module: SampleService.core.validator.builtin
-      parameters:
-        ontology: envo_ontology
-        ancestor_term: ENVO:00010483
-        srv_wiz_url: https://kbase.us/services/service_wizard
-
-  # ENVO_01000813 'astronimical body part'
-  feature:
-    key_metadata:
-      display_name: Feature
-    static_mappings:
-      ENIGMA: Feature
-    validators:
-    - callable_builder: ontology_has_ancestor
-      module: SampleService.core.validator.builtin
-      parameters:
-        ontology: envo_ontology
-        ancestor_term: ENVO:01000813
-        srv_wiz_url: https://kbase.us/services/service_wizard
+  # NOTE: Moved material to core material
+  # NOTE: Moved feature to core feature
 
   filter:
     key_metadata:
       description: Filter pore size in microns
       display_name: Filter
+      example: 2; 10
     static_mappings:
       ENIGMA: Filter
     validators:
@@ -288,6 +250,7 @@ validators:
     key_metadata:
       description: ground elevation in ft above mean sea level (ft AMSL)
       display_name: Ground Elevation
+      example: 1004.62
     static_mappings:
       ENIGMA: Ground Elevation
     validators:
@@ -301,66 +264,14 @@ validators:
         key: units
         units: ft
 
-  id:
-    key_metadata:
-      description: Unique identifier for the Sample
-      display_name: Id
-    static_mappings:
-      SESAR: IGSN
-    static_mappings:
-      ENIGMA: SampleID
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
-
-  latitude:
-    key_metadata:
-      description: Latitude in degrees
-      display_name: Latitude
-    static_mappings:
-      SESAR: Latitude
-      ENIGMA: Latitude
-      units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -90.0
-        keys: value
-        lte: 90.0
-
-  longitude:
-    key_metadata:
-      description: Longitude in degrees
-      display_name: Longitude
-    static_mappings:
-      SESAR: Longitude
-      ENIGMA: Longitude
-      units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -180.0
-        keys: value
-        lte: 180.0
+  #NOTE: Moved latitude to core latitude
+  #NOTE: Moved longtitude to core longtitude
 
   lower_seal_end_depth:
     key_metadata:
       description: Lower seal end depth in ft below ground surface (ft BGS)
       display_name: Lower Seal End Depth
+      example: 22.1
     static_mappings:
       ENIGMA: Lower Seal End Depth
     validators:
@@ -378,6 +289,7 @@ validators:
     key_metadata:
       description: Lower seal start depth in ft below ground surface (ft BGS)
       display_name: Lower Seal Start Depth
+      example: 20.25
     static_mappings:
       ENIGMA: Lower Seal Start Depth
     validators:
@@ -395,6 +307,7 @@ validators:
     key_metadata:
       description: Maximum water level in ft above mean sea level (ft AMSL)
       display_name: Max Water Level
+      example: 1008.41
     static_mappings:
       ENIGMA: Max Water Level
     validators:
@@ -412,6 +325,7 @@ validators:
     key_metadata:
       description: Minimum water level in ft above mean sea level (ft AMSL)
       display_name: Min Water Level
+      example: 1002.99
     static_mappings:
       ENIGMA: Min Water Level
     validators:
@@ -429,6 +343,7 @@ validators:
     key_metadata:
       description: percent moisture
       display_name: Moisture
+      example: 11.26
     static_mappings:
       ENIGMA: Moisture
     validators:
@@ -444,22 +359,11 @@ validators:
         key: units
         units: percent
 
-  name:
-    key_metadata:
-      description: name validator
-      display_name: Sample Name
-    static_mappings:
-      ENIGMA: Sample Name
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
-
   open_casing_depth:
     key_metadata:
       description: Open casing depth in ft below ground surface (ft BGS)
       display_name: Open Casing Depth
+      example: 92
     static_mappings:
       ENIGMA: Open Casing Depth
     validators:
@@ -477,6 +381,7 @@ validators:
     key_metadata:
       description: open casing inner diameter in inches (in)
       display_name: Open Casing ID
+      example: 6.12
     static_mappings:
       ENIGMA: Open Casing ID
     validators:
@@ -495,6 +400,7 @@ validators:
     key_metadata:
       description: open casing outer diameter in inches (in)
       display_name: Open Casing OD
+      example: 6.62
     static_mappings:
       ENIGMA: Open Casing OD
     validators:
@@ -513,6 +419,7 @@ validators:
     key_metadata:
       description: Open hole depth in ft below ground surface (ft BGS)
       display_name: Open Hole Depth
+      example: 92
     static_mappings:
       ENIGMA: Open Hole Depth
     validators:
@@ -530,6 +437,7 @@ validators:
     key_metadata:
       description: Open hole diameter in inches
       display_name: Open Hole Diameter
+      example: 10
     static_mappings:
       ENIGMA: Open Hole Diameter
     validators:
@@ -548,6 +456,7 @@ validators:
     key_metadata:
       description: Open interval diameter in inches
       display_name: Open Interval Diameter
+      example: 6
     static_mappings:
       ENIGMA: Open Interval Diameter
     validators:
@@ -566,6 +475,7 @@ validators:
     key_metadata:
       description: Open interval end depth in ft below ground surface (ft BGS)
       display_name: Open Interval End Depth
+      example: 125
     static_mappings:
       ENIGMA: Open Interval End Depth
     validators:
@@ -583,6 +493,7 @@ validators:
     key_metadata:
       description: Open interval start depth in ft below ground surface (ft BGS)
       display_name: Open Interval Start Depth
+      example: 92
     static_mappings:
       ENIGMA: Open Interval Start Depth
     validators:
@@ -600,6 +511,7 @@ validators:
     key_metadata:
       description: Organic carbon in milligrams per gram dry weight
       display_name: Organic Carbon
+      example: 0.532
     static_mappings:
       ENIGMA: Organic Carbon
     validators:
@@ -618,6 +530,7 @@ validators:
     key_metadata:
       description: Packind depth end in ft below ground surface (ft BGS)
       display_name: Packing Depth End
+      example: 17.5
     static_mappings:
       ENIGMA: Packing Depth End
     validators:
@@ -635,6 +548,7 @@ validators:
     key_metadata:
       description: Packind depth start in ft below ground surface (ft BGS)
       display_name: Packing Depth Start
+      example: 15.08
     static_mappings:
       ENIGMA: Packing Depth Start
     validators:
@@ -648,44 +562,13 @@ validators:
         key: units
         units: ft
 
-  parent_id:
-    key_metadata:
-      description: id field of parent
-      display_name: Parent ID
-    static_mappings:
-      SESAR: Parent IGSN
-      ENIGMA: Well Name
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        max-len: 240
-
-  ph:
-    key_metadata:
-      description: pH of sample
-      display_name: pH
-    static_mappings:
-      SESAR: pH
-      ENIGMA: pH
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -10.0
-        keys: value
-        lte: 20.0
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: pH
+  # Moved ph to core ph
 
   pore_water_extraction:
     key_metadata:
       description: Pore water extraction in microliters
       display_name: Pore Water Extraction
+      example: 200
     static_mappings:
       ENIGMA: Pore Water Extraction
     validators:
@@ -703,6 +586,7 @@ validators:
     key_metadata:
       description: Screen bottom elevation in ft above mean sea level (ft AMSL)
       display_name: Screen Bottom Elevation
+      example: 985.27
     static_mappings:
       ENIGMA: Screen Bottom Elevation
     validators:
@@ -720,6 +604,7 @@ validators:
     key_metadata:
       description: Screen end depth in ft below ground surface (ft BGS)
       display_name: Screen End Depth
+      example: 14.39
     static_mappings:
       ENIGMA: Screen End Depth
     validators:
@@ -737,6 +622,7 @@ validators:
     key_metadata:
       description: Screen start depth in ft below ground surface (ft BGS)
       display_name: Screen Start Depth
+      example: 14.14
     static_mappings:
       ENIGMA: Screen Start Depth
     validators:
@@ -754,6 +640,7 @@ validators:
     key_metadata:
       description: Screen top elevation in ft above mean sea level (ft AMSL)
       display_name: Screen Top Elevation
+      example: 985.52:was
     static_mappings:
       ENIGMA: Screen Top Elevation
     validators:
@@ -771,6 +658,7 @@ validators:
     key_metadata:
       description: Screened interval in ft
       display_name: Screened Interval
+      example: 0.25
     static_mappings:
       ENIGMA: Screened Interval
     validators:
@@ -784,47 +672,14 @@ validators:
         key: units
         units: ft
 
-  size:
-    key_metadata:
-      description: Size in meters cubed
-      display_name: Size
-    static_mappings:
-      SESAR: Size
-      ENIGMA: Size
-      units: size_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: m^3
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
-
-  temperature:
-    key_metadata:
-      display_name: Temperature
-    static_mappings:
-      SESAR: Temperature
-      ENIGMA: Temperature
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: celsius
+  # Moved size to core size
+  # Move temperature to core temperature
 
   top_of_casing_elevation:
     key_metadata:
       description: Top of casing elevation in ft above mean sea level (ft AMSL)
       display_name: Top of Casing Elevation
+      example: 1000.9076
     static_mappings:
       ENIGMA: Top of Casing Elevation
     validators:
@@ -842,6 +697,7 @@ validators:
     key_metadata:
       description: Top of casing stickup in ft
       display_name: Top of Casing Stickup
+      example: 1.84
     static_mappings:
       ENIGMA: Top of Casing Stickup
     validators:
@@ -855,44 +711,47 @@ validators:
         key: units
         units: ft
 
-  top_of_fresh_bedrock:
-    key_metadata:
-      description: Top of fresh bedrock in ft below ground surface (ft BGS)
-      display_name: Top of Fresh Bedrock
-    static_mappings:
-      ENIGMA: Top of Fresh Bedrock
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
+  #NOTE: Not seeing this in example
+  # top_of_fresh_bedrock:
+  #   key_metadata:
+  #     description: Top of fresh bedrock in ft below ground surface (ft BGS)
+  #     display_name: Top of Fresh Bedrock
+  #   static_mappings:
+  #     ENIGMA: Top of Fresh Bedrock
+  #   validators:
+  #   - callable_builder: number
+  #     module: SampleService.core.validator.builtin
+  #     parameters:
+  #       keys: value
+  #   - callable_builder: units
+  #     module: SampleService.core.validator.builtin
+  #     parameters:
+  #       key: units
+  #       units: ft
 
-  top_of_weathered_bedrock:
-    key_metadata:
-      description: Top of weathered bedrock in ft below ground surface (ft BGS)
-      display_name: Top of Weathered Bedrock
-    static_mappings:
-      ENIGMA: Top of Weathered Bedrock
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
+  #NOTE: Not seeing this in example
+  # top_of_weathered_bedrock:
+  #   key_metadata:
+  #     description: Top of weathered bedrock in ft below ground surface (ft BGS)
+  #     display_name: Top of Weathered Bedrock
+  #   static_mappings:
+  #     ENIGMA: Top of Weathered Bedrock
+  #   validators:
+  #   - callable_builder: number
+  #     module: SampleService.core.validator.builtin
+  #     parameters:
+  #       keys: value
+  #   - callable_builder: units
+  #     module: SampleService.core.validator.builtin
+  #     parameters:
+  #       key: units
+  #       units: ft
 
   total_carbon:
     key_metadata:
       description: Total carbon in milligrams per gram dry weight
       display_name: Total Carbon
+      example: 0.3689
     static_mappings:
       ENIGMA: Total Carbon
     validators:
@@ -911,6 +770,7 @@ validators:
     key_metadata:
       description: Total nitrogen in milligrams per gram dry weight
       display_name: Total Nitrogen
+      example: 0.0572
     static_mappings:
       ENIGMA: Total Nitrogen
     validators:
@@ -925,10 +785,29 @@ validators:
         key: units
         units: mg/g
 
+  upper_seal_end_depth:
+    key_metadata:
+      description: Upper seal end depth in ft below ground surface (ft BGS)
+      display_name: Upper Seal End Depth
+      example: 12
+    static_mappings:
+      SESAR: Upper Seal End Depth
+    validators:
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+
   upper_seal_start_depth:
     key_metadata:
       description: Upper seal start depth in ft below ground surface (ft BGS)
       display_name: Upper Seal Start Depth
+      example: 10
     static_mappings:
       ENIGMA: Upper Seal Start Depth
     validators:
@@ -946,6 +825,7 @@ validators:
     key_metadata:
       description: Well casing depth in ft below ground surface (ft BGS)
       display_name: Well Casing Depth
+      example: 45.25
     static_mappings:
       ENIGMA: Well Casing Depth
     validators:
@@ -963,6 +843,7 @@ validators:
     key_metadata:
       description: Well casing inner diameter. units in inches
       display_name: Well Casing ID
+      example: 3.975
     static_mappings:
       ENIGMA: Well Casing ID
     validators:
@@ -981,6 +862,7 @@ validators:
     key_metadata:
       description: Well casing outer diameter. units in inches
       display_name: Well Casing OD
+      example: 4.5
     static_mappings:
       ENIGMA: Well Casing OD
     validators:

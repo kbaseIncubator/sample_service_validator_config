@@ -1,8 +1,11 @@
+# This will be prefixed to all the keys below.
+namespace: sesar
 validators:
   age_max:
     key_metadata:
-      description: Maximum age in years
+      description: Maximum geological age in years
       display_name: Age (max)
+      example: 4.6
     static_mappings:
       SESAR: Age (max)
       units: age_unit
@@ -20,8 +23,9 @@ validators:
 
   age_min:
     key_metadata:
-      description: minimum age in years
+      description: minimum geological age in years
       display_name: Age (min)
+      example: 4.2
     static_mappings:
       SESAR: Age (min)
       units: age_unit
@@ -37,29 +41,13 @@ validators:
         gte: 0
         keys: value
 
-  depth:
-    key_metadata:
-      description: depth in centimeters below ground surface (cm BGS)
-      display_name: Depth
-    static_mappings:
-      SESAR: Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: cm
-
   depth_in_core_max:
     key_metadata:
       description: maximum depth in core in meters
       display_name: Depth in Core (max)
+      example: 0.003
     static_mappings:
-      SESAR: Depth in Core (max)
+      SESAR:  Depth in Core (max)
       units: depth_scale
     validators:
     - callable_builder: units
@@ -75,8 +63,9 @@ validators:
 
   depth_in_core_min:
     key_metadata:
-      description: minimum depth in core in meters
+      description: Minimum depth in core in meters
       display_name: Depth in Core (min)
+      example: 0.001
     static_mappings:
       SESAR: Depth in Core (min)
       units: depth_scale
@@ -96,6 +85,7 @@ validators:
     key_metadata:
       description: Easting in meters
       display_name: Easting
+      example: 305294
     static_mappings:
       SESAR: Easting
     validators:
@@ -113,6 +103,7 @@ validators:
     key_metadata:
       description: Elevation end in meters
       display_name: Elevation end
+      example: 673.5; -4520
     static_mappings:
       SESAR: Elevation end
       units: elevation_unit
@@ -132,6 +123,7 @@ validators:
     key_metadata:
       description: Elevation start in meters
       display_name: Elevation start
+      example: 678.5; -4536
     static_mappings:
       SESAR: Elevation start
       units: elevation_unit
@@ -147,93 +139,32 @@ validators:
         keys: value
         required: true
 
-  geological_age:
-    key_metadata:
-      description: Geological Age in years * 1000000
-      display_name: Geological Age
-    static_mappings:
-      SESAR: Geological Age
-      units: geological_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: year * 1000000
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0
-        keys: value
-
-  id:
-    key_metadata:
-      description: Unique identifier for the Sample
-      display_name: Id
-    static_mappings:
-      SESAR: IGSN
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
-
-  latitude:
-    key_metadata:
-      description: Latitude in degrees
-      display_name: Latitude
-    static_mappings:
-      SESAR: Latitude
-      units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -90.0
-        keys: value
-        lte: 90.0
-
-  longitude:
-    key_metadata:
-      description: Longitude in degrees
-      display_name: Longitude
-    static_mappings:
-      SESAR: Longitude
-      units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -180.0
-        keys: value
-        lte: 180.0
-
-  name:
-    key_metadata:
-      description: name validator
-      display_name: Sample Name
-    static_mappings:
-      SESAR: Sample Name
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
+  # NOTE: Conflicts with what is in the template
+  # geological_age:
+  #   key_metadata:
+  #     description: Geological Age in years * 1000000
+  #     display_name: Geological Age
+  #     example: 
+  #   static_mappings:
+  #      Geological Age
+  #     units: geological_unit
+  #   validators:
+  #   - callable_builder: units
+  #     module: SampleService.core.validator.builtin
+  #     parameters:
+  #       key: units
+  #       units: year * 1000000
+  #   - callable_builder: number
+  #     module: SampleService.core.validator.builtin
+  #     parameters:
+  #       gte: 0
+  #       keys: value
 
   northing:
     key_metadata:
       description: Northing in meters
       display_name: Northing
+      example: 4111279
     static_mappings:
       SESAR: Northing
     validators:
@@ -247,41 +178,11 @@ validators:
         key: units
         units: m
 
-  parent_id:
+  material:
     key_metadata:
-      description: id field of parent
-      display_name: Parent ID
-    static_mappings:
-      SESAR: Parent IGSN
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        max-len: 240
-
-  ph:
-    key_metadata:
-      description: pH of sample
-      display_name: pH
-    static_mappings:
-      SESAR: pH
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -10.0
-        keys: value
-        lte: 20.0
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: pH
-
-  SESAR:material:
-    key_metadata:
-      display_name: Material
+      description: Material that the sample consists of using SESAR vocabulary.
+      display_name: Material (SESAR)
+      example: Rock; Liquid>Aqueous
     static_mappings:
       SESAR: Material
     validators:
@@ -303,54 +204,16 @@ validators:
         - Soil
         - Synthetic
 
-  size:
+  #TODO: Add controlled list
+  #https://www.geosamples.org/help/vocabularies/subobject
+  sub-object_type:
     key_metadata:
-      description: Size in meters cubed
-      display_name: Size
+      description: More descriptive Object Type. This applies only to samples with Object Type set to Individual Sample.
+      display_name: Sub-object type
+      example: Thin section; Powder
     static_mappings:
-      SESAR: Size
-      units: size_unit
+      SESAR: Sub-object type
     validators:
-    - callable_builder: units
+    - callable_builder: noop
       module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: m^3
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
 
-  temperature:
-    key_metadata:
-      display_name: Temperature
-    static_mappings:
-      SESAR: Temperature
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: celsius
-
-  upper_seal_end_depth:
-    key_metadata:
-      description: Upper seal end depth in ft below ground surface (ft BGS)
-      display_name: Upper Seal End Depth
-    static_mappings:
-      SESAR: Upper Seal End Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft

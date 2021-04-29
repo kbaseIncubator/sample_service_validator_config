@@ -8,6 +8,21 @@
         "properties": {
           "key_metadata": {
             "type": "object",
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "display_name": {
+                "type": "string"
+              },
+              "example": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            },
             "additionalProperties": {
               "type": [
                 "number",
@@ -48,6 +63,9 @@
     "additionalProperties": false
   },
   "properties": {
+    "namespace": {
+      "type": "string"
+    },
     "validators": {
       "$ref": "#/definitions/validator_set"
     },

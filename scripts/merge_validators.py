@@ -49,6 +49,9 @@ def merge_validation_files(files, output_file, ontology_file):
         origin_file = f.split('.')[0]
         with open(f) as f_in:
             data = yaml.load(f_in, Loader=yaml.SafeLoader)
+        prefix = ''
+        if 'namespace' in data:
+            prefix = data['namespace'] + ":"
         for val_type, val_data in [
             ('validators', validators), ('prefix_validators', prefix_validators)
         ]:
@@ -57,8 +60,9 @@ def merge_validation_files(files, output_file, ontology_file):
                     ontology_validators = find_ontology_validator(
                         data[val_type], key, ontology_validators
                     )
+                    keyname = prefix + key
                     val_data = merge_to_existing_validators(
-                        val_type, val_data, key, val, data
+                        val_type, val_data, keyname, val, data
                     )
 
     v_keys = sorted(list(validators.keys()))
