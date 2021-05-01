@@ -1,6 +1,7 @@
 import os
 import sys
 import yaml
+from copy import deepcopy
 
 
 ONTOLOGY_MAPPING = {
@@ -8,6 +9,11 @@ ONTOLOGY_MAPPING = {
     "go_ontology": "GO_terms"
 }
 
+_BUILTIN = 'SampleService.core.validator.builtin'
+_NOOP = [{
+    'callable_builder': 'noop',
+    'module': _BUILTIN
+    }]
 
 def find_ontology_validator(data_field, key, ontology_validators):
     if data_field[key].get('validators'):
@@ -24,6 +30,56 @@ def find_ontology_validator(data_field, key, ontology_validators):
                 })
     return ontology_validators
 
+def expand_macros(val, macros):
+    if 'validators' not in val:
+        val['validators'] = []
+    if 'units' in macros:
+        v = {
+            'callable_builder': 'units',
+            'module': _BUILTIN,
+            }
+        v['parameters'] = {
+                'key': 'units',
+                'units': macros['units']
+                }
+        val['validators'].append(v)
+    if 'type' not in macros:
+        print("type required for macro")
+        print(macros)
+        raise ValueError("Missing type")
+    typ = macros['type']
+    v = {
+        'callable_builder': typ,
+        'module': _BUILTIN,
+        }
+    if typ=='number':
+        v['parameters'] = {'keys': 'value'}
+        for p in ['gte', 'lte', 'gt', 'lt', 'required']:
+            if p in macros:
+                v['parameters'][p] = macros[p]
+    elif typ=='positive_number':
+        v['callable_builder'] = 'number'
+        v['parameters'] = {'keys': 'value'}
+        v['parameters']['gte'] = 0.0
+        for p in ['required']:
+            if p in macros:
+                v['parameters'][p] = macros[p]
+    elif typ=='enum':
+        v['parameters'] = {'allowed-values': macros['allowed-values']}
+    elif typ=='ontology':
+        v['callable_builder'] = 'ontology_has_ancestor'
+        v['parameters'] = {
+                'ontology': macros['ontology'],
+                'ancestor_term': macros['ancestor_term']
+                }
+    elif typ=='string':
+        v['parameters'] = {'max-len': macros['max-len']}
+    else:
+        print("type not recongnized %s" % (typ))
+        raise KeyError("type %s not recognized" % (typ))
+    val['validators'].append(v)
+    return True
+
 
 def merge_to_existing_validators(val_type, val_data, key, val, data):
     if val_data.get(key):
@@ -36,6 +92,12 @@ def merge_to_existing_validators(val_type, val_data, key, val, data):
                 else:
                     val_data[key][data_field] = data[val_type][key][data_field]
     else:
+        if 'macros' in val:
+            macros = val.pop('macros')
+            expand_macros(val, macros)
+        if 'validators' not in val:
+            val['validators'] = deepcopy(_NOOP)
+
         val_data[key] = val
     return val_data
 
@@ -57,12 +119,12 @@ def merge_validation_files(files, output_file, ontology_file):
         ]:
             if data.get(val_type):
                 for key, val in data[val_type].items():
-                    ontology_validators = find_ontology_validator(
-                        data[val_type], key, ontology_validators
-                    )
                     keyname = prefix + key
                     val_data = merge_to_existing_validators(
                         val_type, val_data, keyname, val, data
+                    )
+                    ontology_validators = find_ontology_validator(
+                        data[val_type], key, ontology_validators
                     )
 
     v_keys = sorted(list(validators.keys()))

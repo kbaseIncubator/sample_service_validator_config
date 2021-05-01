@@ -9,17 +9,9 @@ validators:
     static_mappings:
       SESAR: Age (max)
       units: age_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: years
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0
-        keys: value
+    macros:
+      type: positive_number
+      units: years
 
   age_min:
     key_metadata:
@@ -29,17 +21,18 @@ validators:
     static_mappings:
       SESAR: Age (min)
       units: age_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: years
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0
-        keys: value
+    macros:
+      type: positive_number
+      units: years
+
+  # TODO: Add CV https://www.geosamples.org/vocabularies
+  classification:
+    key_metadata:
+      description: Taxonomy (formal classification) Formal categorization of sample.
+      display_name: Classification
+      example: Igneous>Plutonic>Felsic; Plagioclase
+    static_mappings:
+      SESAR: Classification
 
   depth_in_core_max:
     key_metadata:
@@ -49,17 +42,10 @@ validators:
     static_mappings:
       SESAR:  Depth in Core (max)
       units: depth_scale
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: meters
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
+    macros:
+      type: number
+      units: meters
+      required: true
 
   depth_in_core_min:
     key_metadata:
@@ -69,17 +55,10 @@ validators:
     static_mappings:
       SESAR: Depth in Core (min)
       units: depth_scale
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: meters
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
+    macros:
+      type: number
+      units: meters
+      required: true
 
   easting:
     key_metadata:
@@ -88,16 +67,9 @@ validators:
       example: 305294
     static_mappings:
       SESAR: Easting
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: m
+    macros:
+      type: number
+      units: m
 
   elevation_end:
     key_metadata:
@@ -107,17 +79,10 @@ validators:
     static_mappings:
       SESAR: Elevation end
       units: elevation_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: meters
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
+    macros:
+      type: number
+      units: m
+      required: true
 
   elevation_start:
     key_metadata:
@@ -127,38 +92,45 @@ validators:
     static_mappings:
       SESAR: Elevation start
       units: elevation_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: meters
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
+    macros:
+      type: number
+      units: m
+      required: true
 
-  # NOTE: Conflicts with what is in the template
-  # geological_age:
-  #   key_metadata:
-  #     description: Geological Age in years * 1000000
-  #     display_name: Geological Age
-  #     example: 
-  #   static_mappings:
-  #      Geological Age
-  #     units: geological_unit
-  #   validators:
-  #   - callable_builder: units
-  #     module: SampleService.core.validator.builtin
-  #     parameters:
-  #       key: units
-  #       units: year * 1000000
-  #   - callable_builder: number
-  #     module: SampleService.core.validator.builtin
-  #     parameters:
-  #       gte: 0
-  #       keys: value
+  navigation_type:
+    key_metadata:
+      description: Navigation type
+      display_name: Navigation type
+      example: GPS
+    static_mappings:
+      SESAR: Navigation type
+    macros:
+      type: enum
+      allowed-values:
+      - ACOUSTIC_RANGING/GPS
+      - DGPS
+      - DVL
+      - DVL:Renav
+      - DVL:Renav:Confirmed
+      - DVL/LBL
+      - DVL/LBL:Renav
+      - DVL/LBL:Renav:Confirmed
+      - DVL/LBL/INS
+      - DVL/USBL
+      - DVL/USBL:Renav
+      - GLONASS
+      - GPS
+      - GPS:Assumed
+      - GPS/WireOut
+      - LAYBACK
+      - LAYBACK/LBL
+      - LBL
+      - Locale
+      - LORAN
+      - NotApplicable
+      - NotProvided
+      - RTK GPS
+      - USBL
 
   northing:
     key_metadata:
@@ -167,16 +139,9 @@ validators:
       example: 4111279
     static_mappings:
       SESAR: Northing
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: m
+    macros:
+      type: number
+      units: m
 
   material:
     key_metadata:
@@ -185,24 +150,22 @@ validators:
       example: Rock; Liquid>Aqueous
     static_mappings:
       SESAR: Material
-    validators:
-    - callable_builder: enum
-      module: SampleService.core.validator.builtin
-      parameters:
-        allowed-values:
-        - Biology
-        - Gas
-        - Ice
-        - Liquid>aqueous
-        - Liquid>organic
-        - Mineral
-        - NotApplicable
-        - Other
-        - Particulate
-        - Rock
-        - Sediment
-        - Soil
-        - Synthetic
+    macros:
+      type: enum
+      allowed-values:
+      - Biology
+      - Gas
+      - Ice
+      - Liquid>aqueous
+      - Liquid>organic
+      - Mineral
+      - NotApplicable
+      - Other
+      - Particulate
+      - Rock
+      - Sediment
+      - Soil
+      - Synthetic
 
   #TODO: Add controlled list
   #https://www.geosamples.org/help/vocabularies/subobject
@@ -213,7 +176,4 @@ validators:
       example: Thin section; Powder
     static_mappings:
       SESAR: Sub-object type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 

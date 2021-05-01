@@ -6,12 +6,10 @@ validators:
       example: FENVO:01001831
     static_mappings:
       ENIGMA: Biome
-    validators:
-    - callable_builder: ontology_has_ancestor
-      module: SampleService.core.validator.builtin
-      parameters:
-        ontology: envo_ontology
-        ancestor_term: ENVO:00000428
+    macros:
+      type: ontology
+      ontology: envo_ontology
+      ancestor_term: ENVO:00000428
 
   #NOTE: Could validate with GAZ
   city_township:
@@ -21,9 +19,6 @@ validators:
       example: Palisades
     static_mappings:
       SESAR: City/Township
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # TODO: Add validation
   collection_time:
@@ -31,9 +26,6 @@ validators:
       description: Date amd time when the sample was collected in ISO 8601 format
       display_name: Collection date
       example: "2021-04-28T09:10:23-07:00"
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # geographical ontology
   # NOTE: Not in example
@@ -44,12 +36,8 @@ validators:
       example: North America
     static_mappings:
       ENIGMA: Continent
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # NOTE: Map to core location
-  # geographical ontology
   country:
     key_metadata:
       description: Country
@@ -57,11 +45,38 @@ validators:
       example: United States
     static_mappings:
       ENIGMA: Country
+
+  county:
+    key_metadata:
+      description: County
+      display_name: County
+      example: United States
     static_mappings:
-      SESAR: Country
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
+      ENIGMA: County
+
+  locality:
+    key_metadata:
+      description: Name of the specific place where your sample was collected. This could be the name of a mine, a volcanic field, a vent field, or similar
+      display_name: Locality
+      example: Franklin Mine; Craters of the Moon National Park
+    static_mappings:
+      SESAR: Locality description
+
+  locality_description:
+    key_metadata:
+      description: Additional information about the specific place where your sample was collected
+      display_name: Locality description
+      example: on private land
+    static_mappings:
+      SESAR: Locality description
+
+  location_description:
+    key_metadata:
+      description: Free text description of the location
+      display_name: Location description
+      example: flank of volcanic cone
+    static_mappings:
+      SESAR: Location description
 
 
   #NOTE: ENIGMA convert from cm -> m
@@ -73,16 +88,9 @@ validators:
     static_mappings:
       SESAR: Depth
       ENIGMA: Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: m
+    macros:
+      units: m
+      type: number
 
   description:
     key_metadata:
@@ -92,9 +100,6 @@ validators:
     static_mappings:
       SESAR: Description
       ENIGMA: Description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   elevation:
     key_metadata:
@@ -103,9 +108,6 @@ validators:
       example: 678.5; -4536
     static_mappings:
       SESAR: Elevation
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   elevation_end:
     key_metadata:
@@ -114,9 +116,6 @@ validators:
       example: 673.5; -4520
     static_mappings:
       SESAR: Elevation end
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # NOTE: MiXS?
   # TODO: Make a CV
@@ -127,11 +126,8 @@ validators:
       example: Water; Soil 
     static_mappings:
       ENIGMA: Env_package
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
-  # ENVO_01000813 'astronimical body part'
+  # ENVO_01000813
   feature:
     key_metadata:
       description: Feature from ENVO (child of ENVO:01000813)
@@ -139,12 +135,10 @@ validators:
       example: ENVO:00000314
     static_mappings:
       ENIGMA: Feature
-    validators:
-    - callable_builder: ontology_has_ancestor
-      module: SampleService.core.validator.builtin
-      parameters:
-        ontology: envo_ontology
-        ancestor_term: ENVO:01000813
+    macros:
+      type: ontology
+      ontology: envo_ontology
+      ancestor_term: ENVO:01000813
 
   material:
     key_metadata:
@@ -153,96 +147,66 @@ validators:
       example: ENVO:01001614
     static_mappings:
       ENIGMA: Material
-    validators:
-    - callable_builder: ontology_has_ancestor
-      module: SampleService.core.validator.builtin
-      parameters:
-        ontology: envo_ontology
-        ancestor_term: ENVO:00010483
+    macros:
+      type: ontology
+      ontology: envo_ontology
+      ancestor_term: ENVO:00010483
 
   latitude:
     key_metadata:
-      description: Latitude of the location where the sample was collected in WGS 84 coordinate system. (‘Start latitude’ for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.
+      description: Latitude of the location where the sample was collected in WGS 84 coordinate system. ('Start latitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.
       display_name: Latitude
       example: 5.89634
     static_mappings:
       SESAR: Latitude
       units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -90.0
-        keys: value
-        lte: 90.0
+    macros:
+      units: degrees
+      type: number
+      gte: -90.0
+      lte: 90.0
 
   latitude_end:
     key_metadata:
-      description: End latitude of the location where the sample was collected in WGS 84 coordinate system. ('End latitude’ for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.
+      description: End latitude of the location where the sample was collected in WGS 84 coordinate system. ('End latitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.
       display_name: Latitude End
       example: 5.89634
     static_mappings:
       SESAR: Latitude (end)
       units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -90.0
-        keys: value
-        lte: 90.0
+    macros:
+      units: degrees
+      type: number
+      gte: -90.0
+      lte: 90.0
 
   longitude:
     key_metadata:
-      description: Longitude of the location where the sample was collected in WGS 84 cooridinate system. (‘Start longitude’ for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for ‘West’ longitudes.
+      description: Longitude of the location where the sample was collected in WGS 84 cooridinate system. ('Start longitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for 'West' longitudes.
       display_name: Longitude
       example: -103.785
     static_mappings:
       SESAR: Longitude
       units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -180.0
-        keys: value
-        lte: 180.0
+    macros:
+      units: degrees
+      type: number
+      gte: -180.0
+      lte: 180.0
 
   longitude_end:
     key_metadata:
-      description: End longitude of the location where the sample was collected in WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative values for ‘West’ longitudes.
+      description: End longitude of the location where the sample was collected in WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative values for 'West' longitudes.
       display_name: Longitude End
       example: -103.285
     static_mappings:
       SESAR: Longitude (end)
       units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -180.0
-        keys: value
-        lte: 180.0
+    macros:
+      units: degrees
+      type: number
+      gte: -180.0
+      lte: 180.0
 
   # TODO: Validate date
   modification_date:
@@ -250,9 +214,6 @@ validators:
       description: Modification date
       display_name: Modification Date
       example: 01-OCT-19 11.32.17.481000000 AM
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   name:
     key_metadata:
@@ -261,11 +222,9 @@ validators:
       example: SAM1234; IEMEG0001
     static_mappings:
       SESAR: Sample Name
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
+    macros:
+      type: string
+      max-len: 240
 
   other_names:
     key_metadata:
@@ -275,9 +234,6 @@ validators:
     static_mappings:
       SESAR: Other name(s)
       ENIGMA:
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   ph:
     key_metadata:
@@ -286,18 +242,11 @@ validators:
       example: 7.0
     static_mappings:
       SESAR: pH
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -10.0
-        keys: value
-        lte: 20.0
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: pH
+    macros:
+      type: number
+      gte: -10.0
+      lte: 20.0
+      units: pH
 
   size:
     key_metadata:
@@ -308,17 +257,10 @@ validators:
       SESAR: Size
       ENIGMA: Size
       units: size_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: m^3
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
+    macros:
+      units: m^3
+      type: number
+      required: true
 
   # geographical ontology
   state_province:
@@ -328,27 +270,18 @@ validators:
       example: Alaska
     static_mappings:
       SESAR: State/Province
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   study_doi:
     key_metadata:
       description: Study DOI
       display_name: Study DOI
       example: TODO
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   study_principal_investigator:
     key_metadata:
       description: Study Principal Investigator
       display_name: Study Principal Investigator
       example: Charles Darwin
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # TODO: Clarify what this is the temperature of
   temperature:
@@ -358,27 +291,18 @@ validators:
       example: 22.1
     static_mappings:
       SESAR: Temperature
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: celsius
+    macros:
+      units: celsius
+      type: number
   
   sample_template:
     key_metadata:
       description: Template Format
       display_name: Template
       example: SESAR; ENIGMA; KBASE
-    validators:
-    - callable_builder: enum
-      module: SampleService.core.validator.builtin
-      parameters:
-        allowed-values:
-        - SESAR
-        - ENIGMA
-        - KBASE
+    macros:
+      type: enum
+      allowed-values:
+      - SESAR
+      - ENIGMA
+      - KBASE

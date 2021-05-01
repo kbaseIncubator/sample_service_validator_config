@@ -6,24 +6,16 @@ validators:
       description: NCBI Taxonomy Name
       display_name: NCBI taxonomy name
       example: soil metagenome
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
+  # Can make a CV
   "nmdc:omics_type":
     key_metadata:
       description: NMDC OMICS Type
       display_name: NMDC OMICS type
       example: Metagenome; Metatranscriptome
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # TODO: Make this MIxS
   # env_local_scale_term:
   #   key_metadata:
   #     description:
   #     display_name: NMDC environment term, local scale
-  #   validators:
-  #   - callable_builder: noop
-  #     module: SampleService.core.validator.builtin

@@ -8,9 +8,6 @@ validators:
       example: B; wB; U/wB; wB
     static_mappings:
       ENIGMA: Aquifer
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   area_name:
     key_metadata:
@@ -19,9 +16,6 @@ validators:
       example: Area 2; Background A; Area 4
     static_mappings:
       ENIGMA: Area Name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   boring_refusal:
     key_metadata:
@@ -30,9 +24,6 @@ validators:
       example: Y; N
     static_mappings:
       ENIGMA: Boring Refusal
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   #NOTE: We can map this and date into core
   collection_time:
@@ -42,9 +33,6 @@ validators:
       example: 9:39:00 AM
     static_mappings:
       ENIGMA: Collection time
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   condition:
     key_metadata:
@@ -53,9 +41,6 @@ validators:
       example: Open
     static_mappings:
       ENIGMA: Condition
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   dapi_cell_count:
     key_metadata:
@@ -64,9 +49,6 @@ validators:
       example: 9.69E+06
     static_mappings:
       ENIGMA: DAPI Cell Count
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # enforce as some datetime
   #NOTE: Merge into core collection_time
@@ -77,9 +59,6 @@ validators:
       example: "2019-06-18"
     static_mappings:
       ENIGMA: Date
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   #NOTE: Moved to core description
 
@@ -90,9 +69,6 @@ validators:
       example: GP DT-32
     static_mappings:
       ENIGMA: Drive Casing Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # NOTE: Move environment_package to core env_packcage
 
@@ -104,9 +80,6 @@ validators:
       example: 100 Well
     static_mappings:
       ENIGMA: Experiment Name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   fraction:
     key_metadata:
@@ -115,9 +88,6 @@ validators:
       example: Spin Down; Total Cells; .2um
     static_mappings:
       ENIGMA: Fraction
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   fractures_cavities_waterbreaks:
     key_metadata:
@@ -126,9 +96,6 @@ validators:
       example: WB @ 14, 41
     static_mappings:
       ENIGMA: Fractures/Cavities/WaterBreaks
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   functional_area:
     key_metadata:
@@ -137,9 +104,6 @@ validators:
       example: S-3 Site; New Hope Pond
     static_mappings:
       ENIGMA: Functional Area
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # ENVO "ENVO_00000191:solid astronomial body part" / geographical ontology
   geological_zone:
@@ -149,9 +113,6 @@ validators:
       example: Saturated; Vadose
     static_mappings:
       ENIGMA: Geological Zone
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   installation_method:
     key_metadata:
@@ -160,9 +121,6 @@ validators:
       example: CORE; AUGER; MANUAL
     static_mappings:
       ENGIMA: Installation Method
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   #NOTE: Make a number
   leucine_activity:
@@ -172,9 +130,6 @@ validators:
       example: 0.000576856
     static_mappings:
       ENIGMA: Leucine Activity (ngC/day cell)
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   lower_seal_type:
     key_metadata:
@@ -183,9 +138,6 @@ validators:
       example: BENT-PEL; BENT
     static_mappings:
       ENIGMA: Lower Seal Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   maturation_time:
     key_metadata:
@@ -194,9 +146,6 @@ validators:
       example: 24hr; 72hr
     static_mappings:
       ENIGMA: Maturation Time
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   method:
     key_metadata:
@@ -205,9 +154,6 @@ validators:
       example: BONCAT; PMA; No PMA
     static_mappings:
       ENIGMA: Method
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   open:
     key_metadata:
@@ -216,9 +162,6 @@ validators:
       example: yes; no
     static_mappings:
       ENIGMA: Open
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   open_casing_type:
     key_metadata:
@@ -227,9 +170,6 @@ validators:
       example: SF25; STL
     static_mappings:
       ENIGMA: Open Casing Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   origination_or_plug_abandon:
     key_metadata:
@@ -238,9 +178,6 @@ validators:
       example: 02/06/92
     static_mappings:
       ENIGMA: Origination or Plug/Abandon
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # Map other_name to core other_names
 
@@ -252,9 +189,6 @@ validators:
       example: SAND; SAND-2
     static_mappings:
       ENIGMA: Packing Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # TODO: Switch to a number
   recovery_factor:
@@ -264,9 +198,6 @@ validators:
       example: 1.57
     static_mappings:
       ENIGMA: Recovery Factor
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # TODO: Switch to a number
   redox_potential:
@@ -276,9 +207,6 @@ validators:
       example: 421.5
     static_mappings:
       ENIGMA: Redox Potential
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   replicate:
     key_metadata:
@@ -287,11 +215,7 @@ validators:
       example: A1; A2; B1; C
     static_mappings:
       ENIGMA: Replicate
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
-  # ENVO (?)
   rock_formation:
     key_metadata:
       description: Rock Formation
@@ -299,9 +223,6 @@ validators:
       example: Conasauga/Maynardville Limestone; Conasauga/Nolichucky Shale
     static_mappings:
       ENIGMA: Rock Formation
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   screen_type:
     key_metadata:
@@ -310,9 +231,6 @@ validators:
       example: PP/.02
     static_mappings:
       ENIGMA: Screen Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # Change to Boolean
   screened:
@@ -322,11 +240,9 @@ validators:
       example: yes; no
     static_mappings:
       ENIGMA: Screened
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   #NOTE: Merge into core collection_time
+  #Could use a CV
   time_zone:
     key_metadata:
       description: Time Zone (relative to UTC)
@@ -334,18 +250,6 @@ validators:
       example: UTC-4
     static_mappings:
       ENIGMA: Time Zone
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
-  # timezone:
-  #   key_metadata:
-  #     display_name: Timezone
-  #   static_mappings:
-  #     ENIGMA: Timezone
-  #   validators:
-  #   - callable_builder: noop
-  #     module: SampleService.core.validator.builtin
 
   #NOTE: Make a CV
   treatment:
@@ -355,9 +259,6 @@ validators:
       example: HPG; No HPG
     static_mappings:
       ENIGMA: Treatment
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   upper_seal_type:
     key_metadata:
@@ -366,19 +267,6 @@ validators:
       example: BENT; BENT-PEL
     static_mappings:
       ENIGMA: Upper Seal Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
-  # Same as well_name
-  # well:
-  #   key_metadata:
-  #     display_name: Well
-  #   static_mappings:
-  #     ENIGMA: Well
-  #   validators:
-  #   - callable_builder: noop
-  #     module: SampleService.core.validator.builtin
 
   well_casing_type:
     key_metadata:
@@ -387,9 +275,6 @@ validators:
       example:  SP; MP 
     static_mappings:
       ENIGMA: Well Casing Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   well_name:
     key_metadata:
@@ -398,10 +283,7 @@ validators:
       example: GW085; GW098
     static_mappings:
       ENIGMA: Well Name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
+ 
   well_status:
     key_metadata:
       description: Status of Well
@@ -409,9 +291,6 @@ validators:
       example: Active; Inactive
     static_mappings:
       ENIGMA: Well Status
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   well_type:
     key_metadata:
@@ -420,7 +299,3 @@ validators:
       example: SP; MP
     static_mappings:
       ENIGMA: Type of Well
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-

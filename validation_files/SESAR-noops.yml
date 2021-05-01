@@ -1,16 +1,37 @@
 # This will be prefixed to all the keys below.
 namespace: sesar
 validators:
-  classification:
+  archive_current:
     key_metadata:
-      description: Taxonomy (formal classification) Formal categorization of sample.
-      display_name: Classification
-      example: Igneous>Plutonic>Felsic; Plagioclase
+      description: Name of institution, museum, or repository where the sample is currently stored.
+      display_name: Current archive
+      example: Lamont Deep Sea Core Repository; Palisades, NY
     static_mappings:
-      SESAR: Classification
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
+      SESAR: Current archive
+
+  archive_contact_current:
+    key_metadata:
+      description: Address and/or email of the person who should be contacted for information about or access to the sample.
+      display_name: Current archive contact
+      example: curator@ldeo.columbia.edu
+    static_mappings:
+      SESAR: Current archive contact
+
+  archive_original:
+    key_metadata:
+      description: Name of institution, museum, or repository where the sample is originally stored.
+      display_name: Original archive
+      example: Lamont Deep Sea Core Repository; Palisades, NY
+    static_mappings:
+      SESAR: Original archive
+
+  archive_contact_original:
+    key_metadata:
+      description: Address and/or email of the person who should be contacted for information about the sample's original archive.
+      display_name: Original archive contact
+      example: curator@ldeo.columbia.edu
+    static_mappings:
+      SESAR: Original archive contact
 
   collection_date:
     key_metadata:
@@ -20,9 +41,6 @@ validators:
     static_mappings:
       SESAR: Collection date
       units: collection_date_precision
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   collection_date_end:
     key_metadata:
@@ -32,9 +50,6 @@ validators:
     static_mappings:
       SESAR: Collection date (end)\
       units: collection_date_precision
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   collection_date_precision:
     key_metadata:
@@ -43,9 +58,6 @@ validators:
       example: year; month; day; time
     static_mappings:
       SESAR: Collection date precision
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   collection_method:
     key_metadata:
@@ -54,9 +66,6 @@ validators:
       example: Dredging; Manual
     static_mappings:
       SESAR: Collection method
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   collection_method_description:
     key_metadata:
@@ -65,9 +74,14 @@ validators:
       example: Hand sample collected from the top part of a large boulder
     static_mappings:
       SESAR: Collection method description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
+
+  collection_time:
+    key_metadata:
+      description: Time when the sample was collected.
+      display_name: Collection time
+      example: 12:05:03Z
+    static_mappings:
+      SESAR: Collection time
 
   collection_time_end:
     key_metadata:
@@ -75,11 +89,7 @@ validators:
       display_name: Collection time (end)
       example: 13:05:01Z
     static_mappings:
-      ENIGMA: Collection time (end)
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
+      SESAR: Collection time (end)
 
   collector_chief_scientist:
     key_metadata:
@@ -88,9 +98,6 @@ validators:
       example: Jane Smith
     static_mappings:
       SESAR: Collector/Chief Scientist name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   collector_chief_scientist_address:
     key_metadata:
@@ -99,34 +106,9 @@ validators:
       example: Woods Hole Oceanographic Institution, Woods Hole, MA
     static_mappings:
        Collector/Chief Scientist address
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   #country moved to core
   #county moved to core
-
-  current_archive:
-    key_metadata:
-      description: Name of institution, museum, or repository where the sample is currently stored.
-      display_name: Current archive
-      example: Lamont Deep Sea Core Repository; Palisades, NY
-    static_mappings:
-      SESAR: Current archive
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
-  current_archive_contact:
-    key_metadata:
-      description: Address and/or email of the person who should be contacted for information about or access to the sample.
-      display_name: Current archive contact name
-      example: curator@ldeo.columbia.edu
-    static_mappings:
-      SESAR: Current archive contact name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   depth_scale:
     key_metadata:
@@ -135,20 +117,14 @@ validators:
       example: MBSF; cm
     static_mappings:
       SESAR: Depth scale
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
-  field_name_informal_classification:
+  field_name:
     key_metadata:
       description: Taxonomy (field name) Informal classification of sample.
       display_name: Field name (informal classification)
       example: basalt; amphibole; sea water
     static_mappings:
       SESAR: Field name (informal classification)
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   field_program_cruise:
     key_metadata:
@@ -157,10 +133,6 @@ validators:
       example: TN182
     static_mappings:
       SESAR: Field program/cruise
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
 
   #NOTE: Should this be a CV?
   geological_age:
@@ -170,20 +142,14 @@ validators:
       example: Cretaceous
     static_mappings:
       SESAR: Geological age
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   geological_unit:
     key_metadata:
-      description: A body of rock established as a distinct entity in the classification of the Earth’s rocks, e.g. Supergroup, Group, Formation, or Flow
+      description: A body of rock established as a distinct entity in the classification of the Earth's rocks, e.g. Supergroup, Group, Formation, or Flow
       display_name: Geological Unit
       example: Coconino Sandstone; Fig Tree Formation
     static_mappings:
       SESAR: Geological unit
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   igsn:
     key_metadata:
@@ -192,31 +158,30 @@ validators:
       example: IEMEG0001
     static_mappings:
       SESAR: IGSN
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
-  locality_description:
+  launch_id:
     key_metadata:
-      description: Additional information about the specific place where your sample was collected
-      display_name: Locality description
-      example: on private land
+      description: Further identifying information about the launch
+      display_name: Launch ID
+      example: 3969; J2-434
     static_mappings:
-      SESAR: Locality description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
+      SESAR: Launch ID
 
-  location_description:
+  launch_platform_name:
     key_metadata:
-      description: Free text description of the location
-      display_name: Location description
-      example: flank of volcanic cone
+      description: The name of the launch used to collect the sample.
+      display_name: Launch platform name
+      example: Alvin; Jason II
     static_mappings:
-      SESAR: Location description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
+      SESAR: Launch platform name
+
+  launch_type:
+    key_metadata:
+      description: The type of launch used to collect the sample. 
+      display_name: Launch type
+      example: HOV
+    static_mappings:
+      SESAR: Launch type
 
   physiographic_feature_name:
     key_metadata:
@@ -225,20 +190,6 @@ validators:
       example: East Pacific Rise; Dead Sea
     static_mappings:
       SESAR: Name of physiographic feature
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-
-  navigation_type:
-    key_metadata:
-      description: Navigation type
-      display_name: Navigation type
-      example: GPS
-    static_mappings:
-      SESAR: Navigation type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   parent_igsn:
     key_metadata:
@@ -247,9 +198,6 @@ validators:
       example: IEMEG0002
     static_mappings:
       SESAR: Parent IGSN
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   physiographic_feature_primary:
     key_metadata:
@@ -257,20 +205,23 @@ validators:
       display_name: Primary physiographic feature
       example: volcano; mid-ocean ridge
     static_mappings:
-       Primary physiographic feature
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
+      SESAR: Primary physiographic feature
 
-  # purpose:
-  #   key_metadata:
-  #     description: 
-  #     display_name: Purpose
-  #   static_mappings:
-  #      Purpose
-  #   validators:
-  #   - callable_builder: noop
-  #     module: SampleService.core.validator.builtin
+  platform_name:
+    key_metadata:
+      description: Name of platform for the cruise.
+      display_name: Platform name
+      example: R/V Roger Revelle
+    static_mappings:
+      SESAR: Platform name
+
+  platform_type:
+    key_metadata:
+      description: Type of platform for the cruise. 
+      display_name: Platform type
+      example: Ship
+    static_mappings:
+      SESAR: Platform type
 
   related_identifiers:
     key_metadata:
@@ -279,9 +230,6 @@ validators:
       example: IEMEG0003
     static_mappings:
       SESAR: Related Identifiers
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   #TODO: Need examples
   relation_type:
@@ -291,9 +239,6 @@ validators:
       example: TODO
     static_mappings:
       SESAR: Relation Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   # Note: This coould be core
   release_date:
@@ -303,9 +248,6 @@ validators:
       example: "2018-03-15"
     static_mappings:
       SESAR: Release date
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   size:
     key_metadata:
@@ -314,20 +256,14 @@ validators:
       example: 2x4; 45
     static_mappings:
       SESAR: Size
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   size_unit:
     key_metadata:
-      description: Unit for the numerical value provided for ‘size’.
+      description: Unit for the numerical value provided for 'size'.
       display_name: Size unit
       example: cm; kg
     static_mappings:
       SESAR: Size unit
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   state_province:
     key_metadata:
@@ -336,9 +272,6 @@ validators:
       example: Alaska
     static_mappings:
       SESAR: State/Province
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   #NOTE: This could come from a CV
   vertical_datum:
@@ -348,9 +281,6 @@ validators:
       example: NAVD88; MSL
     static_mappings:
       SESAR: Vertical Datum
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
 
   zone:
     key_metadata:
@@ -359,6 +289,3 @@ validators:
       example: 11R
     static_mappings:
       SESAR: Zone
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
