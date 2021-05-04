@@ -59,8 +59,7 @@ files = [
     "validation_files/SESAR.yml",
     "validation_files/ENIGMA.yml",
     "validation_files/miscellaneous.yml",
-    merged_file,
-    "metadata_validation.yml"
+    merged_file
 ]
 
 for file in files:
