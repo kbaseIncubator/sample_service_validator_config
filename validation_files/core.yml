@@ -6,7 +6,7 @@ validators:
       example: FENVO:01001831
     static_mappings:
       ENIGMA: Biome
-    macros:
+    validators:
       type: ontology
       ontology: envo_ontology
       ancestor_term: ENVO:00000428
@@ -88,7 +88,7 @@ validators:
     static_mappings:
       SESAR: Depth
       ENIGMA: Depth
-    macros:
+    validators:
       units: m
       type: number
 
@@ -135,7 +135,7 @@ validators:
       example: ENVO:00000314
     static_mappings:
       ENIGMA: Feature
-    macros:
+    validators:
       type: ontology
       ontology: envo_ontology
       ancestor_term: ENVO:01000813
@@ -147,7 +147,7 @@ validators:
       example: ENVO:01001614
     static_mappings:
       ENIGMA: Material
-    macros:
+    validators:
       type: ontology
       ontology: envo_ontology
       ancestor_term: ENVO:00010483
@@ -160,7 +160,7 @@ validators:
     static_mappings:
       SESAR: Latitude
       units: str:degrees
-    macros:
+    validators:
       units: degrees
       type: number
       gte: -90.0
@@ -174,7 +174,7 @@ validators:
     static_mappings:
       SESAR: Latitude (end)
       units: str:degrees
-    macros:
+    validators:
       units: degrees
       type: number
       gte: -90.0
@@ -188,7 +188,7 @@ validators:
     static_mappings:
       SESAR: Longitude
       units: str:degrees
-    macros:
+    validators:
       units: degrees
       type: number
       gte: -180.0
@@ -202,7 +202,7 @@ validators:
     static_mappings:
       SESAR: Longitude (end)
       units: str:degrees
-    macros:
+    validators:
       units: degrees
       type: number
       gte: -180.0
@@ -222,7 +222,7 @@ validators:
       example: SAM1234; IEMEG0001
     static_mappings:
       SESAR: Sample Name
-    macros:
+    validators:
       type: string
       max-len: 240
 
@@ -242,7 +242,7 @@ validators:
       example: 7.0
     static_mappings:
       SESAR: pH
-    macros:
+    validators:
       type: number
       gte: -10.0
       lte: 20.0
@@ -257,7 +257,7 @@ validators:
       SESAR: Size
       ENIGMA: Size
       units: size_unit
-    macros:
+    validators:
       units: m^3
       type: number
       required: true
@@ -291,7 +291,7 @@ validators:
       example: 22.1
     static_mappings:
       SESAR: Temperature
-    macros:
+    validators:
       units: celsius
       type: number
   
@@ -300,7 +300,7 @@ validators:
       description: Template Format
       display_name: Template
       example: SESAR; ENIGMA; KBASE
-    macros:
+    validators:
       type: enum
       allowed-values:
       - SESAR

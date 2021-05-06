@@ -9,8 +9,9 @@ validators:
     static_mappings:
       SESAR: Age (max)
       units: age_unit
-    macros:
-      type: positive_number
+    validators:
+      type: number
+      gte: 0.0
       units: years
 
   age_min:
@@ -21,8 +22,9 @@ validators:
     static_mappings:
       SESAR: Age (min)
       units: age_unit
-    macros:
-      type: positive_number
+    validators:
+      type: number
+      gte: 0.0
       units: years
 
   # TODO: Add CV https://www.geosamples.org/vocabularies
@@ -42,7 +44,7 @@ validators:
     static_mappings:
       SESAR:  Depth in Core (max)
       units: depth_scale
-    macros:
+    validators:
       type: number
       units: meters
       required: true
@@ -55,7 +57,7 @@ validators:
     static_mappings:
       SESAR: Depth in Core (min)
       units: depth_scale
-    macros:
+    validators:
       type: number
       units: meters
       required: true
@@ -67,7 +69,7 @@ validators:
       example: 305294
     static_mappings:
       SESAR: Easting
-    macros:
+    validators:
       type: number
       units: m
 
@@ -79,7 +81,7 @@ validators:
     static_mappings:
       SESAR: Elevation end
       units: elevation_unit
-    macros:
+    validators:
       type: number
       units: m
       required: true
@@ -92,7 +94,7 @@ validators:
     static_mappings:
       SESAR: Elevation start
       units: elevation_unit
-    macros:
+    validators:
       type: number
       units: m
       required: true
@@ -104,7 +106,7 @@ validators:
       example: GPS
     static_mappings:
       SESAR: Navigation type
-    macros:
+    validators:
       type: enum
       allowed-values:
       - ACOUSTIC_RANGING/GPS
@@ -139,7 +141,7 @@ validators:
       example: 4111279
     static_mappings:
       SESAR: Northing
-    macros:
+    validators:
       type: number
       units: m
 
@@ -150,7 +152,7 @@ validators:
       example: Rock; Liquid>Aqueous
     static_mappings:
       SESAR: Material
-    macros:
+    validators:
       type: enum
       allowed-values:
       - Biology
