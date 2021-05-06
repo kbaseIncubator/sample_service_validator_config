@@ -33,30 +33,50 @@
             }
           },
           "validators": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "module": {
-                  "type": "string"
-                },
-                "callable_builder": {
-                  "type": "string"
-                },
-                "parameters": {
-                  "type": "object"
-                }
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "number",
+                  "string",
+                  "enum",
+                  "ontology"
+                  ]
               },
-              "additionalProperties": false,
-              "required": [
-                "module",
-                "callable_builder"
+              "units": {
+                "type": "string"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "lte": {
+                "type": "number"
+              },
+              "gte": {
+                "type": "number"
+              },
+              "max-len": {
+                "type": "number"
+              },
+              "ontology": {
+                "type": "string"
+              },
+              "ancestor_term": {
+                "type": "string"
+              },
+              "allowed-values": {
+                "type": "array"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type"
               ]
-            }
           }
         },
         "required": [
-          "validators"
+          "key_metadata"
         ]
       }
     },
@@ -67,9 +87,6 @@
       "type": "string"
     },
     "validators": {
-      "$ref": "#/definitions/validator_set"
-    },
-    "prefix_validators": {
       "$ref": "#/definitions/validator_set"
     }
   },
