@@ -1,5 +1,6 @@
 ordered:
-- name: description
+- display: Description
+  name: description
   ordered_fields:
   - name
   - sesar:igsn
@@ -23,7 +24,8 @@ ordered:
   - env_package
   - material
   - enigma:filter
-- name: geolocation
+- display: Geolocation
+  name: geolocation
   ordered_fields:
   - latitude
   - latitude_end
@@ -47,7 +49,8 @@ ordered:
   - city_township
   - depth_bgs
   - enigma:geological_zone
-- name: collection
+- display: Collection
+  name: collection
   ordered_fields:
   - sesar:field_program_cruise
   - sesar:platform_type
@@ -65,13 +68,15 @@ ordered:
   - enigma:date
   - enigma:collection_time
   - enigma:time_zone
-- name: curation
+- display: Curation
+  name: curation
   ordered_fields:
   - sesar:archive_current
   - sesar:archive_contact_current
   - sesar:archive_original
   - sesar:archive_contact_original
-- name: measurement
+- display: Measurement and Properties
+  name: measurement
   ordered_fields:
   - enigma:recovery_factor
   - enigma:method
@@ -95,7 +100,8 @@ ordered:
   - enigma:boncat_activity
   - enigma:leucine_activity
   - enigma:functional_area
-- name: well
+- display: ENIGMA Well
+  name: well
   ordered_fields:
   - enigma:well_type
   - enigma:top_of_casing_stickup
@@ -151,7 +157,8 @@ ordered:
   - enigma:open_interval_end_depth
   - enigma:open_interval_diameter
   - enigma:rock_formation
-- name: relation_to_parent
+- display: Relation to Parent
+  name: relation_to_parent
   ordered_fields:
   - sesar:depth_in_core_min
   - sesar:depth_in_core_max

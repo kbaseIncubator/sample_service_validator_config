@@ -2,9 +2,10 @@ import yaml
 from yaml import Dumper, Loader
 import json
 import sys
+categories = yaml.load(open(sys.argv[1]), Loader=Loader)
 
 ordered_cat = dict()
-for f in sys.argv[1:]:
+for f in sys.argv[2:]:
    templ = yaml.load(open(f), Loader=Loader)
    ordered = [None] * 200
    for k in templ:
@@ -24,7 +25,7 @@ for f in sys.argv[1:]:
 cat_order = [ 'description', 'geolocation', 'collection', 'curation', 'measurement', 'well', 'relation_to_parent']
 order = {'ordered': []}
 for cat in cat_order:
-    order['ordered'].append({'name': cat, 'ordered_fields': ordered_cat[cat]})
+    order['ordered'].append({'name': cat, 'display': categories[cat]['display'], 'ordered_fields': ordered_cat[cat]})
 
 
 print(yaml.dump(order))
